@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Welcome from '../content/section.mdx';
+import Welcome from "@/content/section.mdx";
 
 export default function Home() {
   return (
