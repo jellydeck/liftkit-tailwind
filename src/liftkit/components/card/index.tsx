@@ -1,6 +1,6 @@
 import styles from "./card.module.css";
 import { useMemo } from 'react';
-import { propsToDataAttrs } from '../../'
+import { propsToDataAttrs } from '../utilities';
 
 interface LkCardProps extends React.HTMLAttributes<HTMLDivElement> {
   scaleFactor?: LkFontClass;

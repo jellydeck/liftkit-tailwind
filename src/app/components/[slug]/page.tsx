@@ -1,9 +1,15 @@
+import Grid from "@/liftkit/components/grid";
+import styles from "./page.module.css";
+import NavBar from "@/liftkit/components/navbar";
+
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { default: Post } = await import(`@/content/${slug}.mdx`);
 
   return (
-    <div>
+    <div className={styles.lkPage}>
+      <NavBar></NavBar>
+      <Grid columns={5} gap={"xl"}></Grid>
       Hello world.
       <Post />
     </div>

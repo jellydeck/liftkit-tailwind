@@ -1,4 +1,3 @@
-import styles from "./grid.module.css";
 import { useMemo } from "react";
 import { propsToDataAttrs } from "../utilities";
 
@@ -6,15 +5,22 @@ import { propsToDataAttrs } from "../utilities";
 interface LkGridProps extends React.HTMLAttributes<HTMLDivElement> {
   columns: number;
   gap: LkSizeUnit;
-  autoResponsive: boolean;
+  autoResponsive?: boolean; // Mark as optional since we provide a default
 }
 
-export default function Grid(props: LkGridProps) {
-  // Extract children and any other props you don't want passed as custom attributes
-  // Do this on every component.
-  const { children, ...restProps } = props;
+export default function Grid({
+  autoResponsive = false, // Default value
+  children,
+  ...restProps
+}: LkGridProps) {
+  const lkGridAttrs = useMemo(
+    () => propsToDataAttrs({ ...restProps, autoResponsive }, "grid"),
+    [restProps, autoResponsive]
+  );
 
-  const lkGridAttrs = useMemo(() => propsToDataAttrs(restProps, "lk-dropdown"), []);
-
-  return <div {...lkGridAttrs}>{children}</div>;
+  return (
+    <div lk-component="grid" {...lkGridAttrs}>
+      {children}
+    </div>
+  );
 }

@@ -1,6 +1,6 @@
 import styles from "./badge.module.css";
 import { useMemo } from "react";
-import { propsToDataAttrs } from "./utilities";
+import { propsToDataAttrs } from "../utilities";
 
 
 interface LkBadgeProps extends React.HTMLAttributes<HTMLDivElement> {

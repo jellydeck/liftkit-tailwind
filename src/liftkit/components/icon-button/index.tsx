@@ -22,7 +22,7 @@ export default function IconButton({
 
   return (
     <button type="button" {...dataAttrs} {...rest}>
-      <div lk-button-content-wrap>
+      <div >
         <i lk-component="icon">{icon}</i>
       </div>
       <div lk-component="state-layer"></div>
