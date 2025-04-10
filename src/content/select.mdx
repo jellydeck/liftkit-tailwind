@@ -24,14 +24,13 @@ A dropdown is a relatively positioned container with two children: a `DropdownCh
     <div class="dropdown-item">Option 3</div>
   </div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkDropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -40,14 +39,10 @@ interface LkDropdownProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Dropdown(props: LkDropdownProps) {
   const { children, ...restProps } = props;
 
-  const dropdownAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-dropdown'),
-    []
-  );
+  const dropdownAttrs = useMemo(() => propsToDataAttrs(restProps, "lk-dropdown"), []);
 
   return <div {...dropdownAttrs}>{children}</div>;
 }
-
 ```
 
 ### CSS (Reference)
@@ -56,12 +51,11 @@ export default function Dropdown(props: LkDropdownProps) {
 [lk-component="dropdown"] {
   position: relative;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 

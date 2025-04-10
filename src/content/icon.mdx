@@ -17,19 +17,18 @@ A simple `<i>` element with a single slot for accepting an icon. LiftKit uses Ma
 
 ```html
 <i lk-component="icon">add</i>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkIconProps extends React.HTMLAttributes<HTMLElement> {
   fontClass?: Exclude<LkFontClass, `${string}-bold` | `${string}-mono`>;
-  color?: keyof LkColor | 'currentColor';
-  display?: 'block' | 'inline-block' | 'inline';
+  color?: keyof LkColor | "currentColor";
+  display?: "block" | "inline-block" | "inline";
   children: string; // material symbol name
 }
 
@@ -37,22 +36,19 @@ export default function Icon(props: LkIconProps) {
   const { children, ...restProps } = props;
 
   const lkIconAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-icon'),
+    () => propsToDataAttrs(restProps, "lk-icon"),
     [restProps.fontClass, restProps.color, restProps.display]
   );
 
-  return (
-    <i {...lkIconAttrs}>{children}</i>
-  );
+  return <i {...lkIconAttrs}>{children}</i>;
 }
-
 ```
 
 ### CSS
 
 ```css
 [lk-component="icon"] {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
   font-size: var(--lk-size-md);
@@ -62,15 +58,14 @@ export default function Icon(props: LkIconProps) {
   display: block;
   white-space: nowrap;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -80,13 +75,12 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 
 Controls the size of the icon via typography class.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkFontClass` (excluding `-bold`, `-mono`) | `body` | Any non-suffixed LkFontClass value |
+| **Expected Type**                          | **Default Value** | **Acceptable Values**              |
+| ------------------------------------------ | ----------------- | ---------------------------------- |
+| `LkFontClass` (excluding `-bold`, `-mono`) | `body`            | Any non-suffixed LkFontClass value |
 
 ```tsx
 <Icon fontClass="title2">add</Icon>
-
 ```
 
 **color**
@@ -95,13 +89,12 @@ Controls the size of the icon via typography class.
 
 Controls the color of the icon.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `keyof LkColor` or `'currentColor'` | `currentColor` | Any LkColor key or 'currentColor' |
+| **Expected Type**                   | **Default Value** | **Acceptable Values**             |
+| ----------------------------------- | ----------------- | --------------------------------- |
+| `keyof LkColor` or `'currentColor'` | `currentColor`    | Any LkColor key or 'currentColor' |
 
 ```tsx
 <Icon color="lk-primary">star</Icon>
-
 ```
 
 **display**
@@ -110,11 +103,10 @@ Controls the color of the icon.
 
 Controls the CSS `display` property of the icon.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `block` | `block`, `inline-block`, `inline` |
+| **Expected Type** | **Default Value** | **Acceptable Values**             |
+| ----------------- | ----------------- | --------------------------------- |
+| `string`          | `block`           | `block`, `inline-block`, `inline` |
 
 ```tsx
 <Icon display="inline">close</Icon>
-
 ```

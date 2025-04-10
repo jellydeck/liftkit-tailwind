@@ -9,32 +9,28 @@ The `MenuChip` component is a stylized `div` used to trigger a `MenuList`. It be
 ### HTML
 
 ```html
-<div
-  lk-component="menu-chip"
-  lk-menu-chip-open="false"
->
+<div lk-component="menu-chip" lk-menu-chip-open="false">
   <span>Menu Label</span>
   <div lk-dropdown-el="chip">
     <i lk-component="icon">keyboard_arrow_down</i>
   </div>
   <div lk-component="state-layer"></div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkMenuChipProps extends React.HTMLAttributes<HTMLDivElement> {
   isActive?: boolean;
   label?: string;
 }
 
-export default function MenuChip({ isActive = false, label = 'Menu Label', ...rest }: LkMenuChipProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ open: isActive }, 'lk-menu-chip'), [isActive]);
+export default function MenuChip({ isActive = false, label = "Menu Label", ...rest }: LkMenuChipProps) {
+  const dataAttrs = useMemo(() => propsToDataAttrs({ open: isActive }, "lk-menu-chip"), [isActive]);
 
   return (
     <div {...dataAttrs} {...rest}>
@@ -46,7 +42,6 @@ export default function MenuChip({ isActive = false, label = 'Menu Label', ...re
     </div>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -59,7 +54,7 @@ export default function MenuChip({ isActive = false, label = 'Menu Label', ...re
   padding: var(--lk-size-xs) var(--lk-size-md);
   border: 1px solid var(--lk-outline-variant);
   border-radius: var(--subheading-line-height);
-  background-color: #FFF;
+  background-color: #fff;
   position: relative;
   transition: border 0.2s ease-out, outline 0.2s ease-out;
 }
@@ -81,12 +76,11 @@ export default function MenuChip({ isActive = false, label = 'Menu Label', ...re
 [lk-menu-chip-open="true"] > [lk-component="state-layer"] {
   opacity: 0.15;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -97,12 +91,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls whether the chip is shown in its "open" visual state.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```tsx
 <MenuChip isActive={true} />
-
 ```
 
 ### **label**
@@ -112,10 +105,9 @@ Controls whether the chip is shown in its "open" visual state.
 Sets the text label displayed inside the chip.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `Menu Label` | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | `Menu Label`      | Any string            |
 
 ```tsx
 <MenuChip label="Options" />
-
 ```

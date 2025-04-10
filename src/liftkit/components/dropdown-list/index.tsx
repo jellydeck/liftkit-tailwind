@@ -1,5 +1,6 @@
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import styles from "./dropdown-list.module.css";
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkDropdownListProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen?: boolean;
@@ -9,10 +10,7 @@ interface LkDropdownListProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function DropdownList(props: LkDropdownListProps) {
   const { children, ...restProps } = props;
 
-  const listAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-dropdown-list'),
-    [restProps.isOpen]
-  );
+  const listAttrs = useMemo(() => propsToDataAttrs(restProps, "lk-dropdown-list"), [restProps.isOpen]);
 
   return (
     <div {...listAttrs}>

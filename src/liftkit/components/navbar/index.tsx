@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
-import Image from '@/liftkit/components/image';
-import IconButton from '@/liftkit/components/icon-button';
-import Row from '@/liftkit/components/row';
-import Link from 'next/link';
-
+import styles from "./navbar.module.css";
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
+import Image from "@/liftkit/components/image";
+import IconButton from "@/liftkit/components/icon-button";
+import Row from "@/liftkit/components/row";
+import Link from "next/link";
 
 interface LkNavBarProps extends React.HTMLAttributes<HTMLDivElement> {
   material?: LkMaterial;
@@ -15,14 +15,14 @@ interface LkNavBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function NavBar({
-  material = 'flat',
+  material = "flat",
   navButtons,
   navDropdowns,
   iconButtons,
   ctaButtons,
   ...rest
 }: LkNavBarProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ material }, 'lk-navbar'), [material]);
+  const dataAttrs = useMemo(() => propsToDataAttrs({ material }, "lk-navbar"), [material]);
 
   return (
     <div {...dataAttrs} {...rest}>

@@ -10,28 +10,35 @@ A `Paragraph` is a semantic `<p>` element used for body text. It shares the same
 
 ```html
 <p lk-component="paragraph" class="lk-font-body">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam.
 </p>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkParagraphProps extends React.HTMLAttributes<HTMLParagraphElement> {
   fontClass?: string; // Should be LkFontClass in production
   content?: string;
 }
 
-export default function Paragraph({ fontClass = 'body', content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.', ...rest }: LkParagraphProps) {
-  const paragraphAttrs = useMemo(() => propsToDataAttrs(rest, 'lk-paragraph'), [rest]);
+export default function Paragraph({
+  fontClass = "body",
+  content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  ...rest
+}: LkParagraphProps) {
+  const paragraphAttrs = useMemo(() => propsToDataAttrs(rest, "lk-paragraph"), [rest]);
 
-  return <p className={`lk-font-${fontClass}`} {...paragraphAttrs}>{content}</p>;
+  return (
+    <p className={`lk-font-${fontClass}`} {...paragraphAttrs}>
+      {content}
+    </p>
+  );
 }
-
 ```
 
 ### CSS (Reference)
@@ -41,12 +48,11 @@ export default function Paragraph({ fontClass = 'body', content = 'Lorem ipsum d
   display: block;
   margin: 0;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -56,13 +62,12 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 
 Controls the visual style of the paragraph via LiftKit font tokens.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkFontClass` | `body` | Any LiftKit font class |
+| **Expected Type** | **Default Value** | **Acceptable Values**  |
+| ----------------- | ----------------- | ---------------------- |
+| `LkFontClass`     | `body`            | Any LiftKit font class |
 
 ```tsx
 <Paragraph fontClass="callout" />
-
 ```
 
 ### **content**
@@ -72,10 +77,9 @@ Controls the visual style of the paragraph via LiftKit font tokens.
 Sets the text content of the paragraph element.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | Lorem ipsum… | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | Lorem ipsum…      | Any string            |
 
 ```tsx
 <Paragraph content="This is a paragraph." />
-
 ```

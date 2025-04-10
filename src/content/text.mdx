@@ -10,16 +10,16 @@ The `Text` component is a generic block of inline-readable content rendered by d
 
 ```html
 <div lk-component="text" class="lk-font-display2-bold">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam.
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 type LkSemanticTag = keyof JSX.IntrinsicElements;
 
@@ -29,13 +29,21 @@ interface LkTextProps extends React.HTMLAttributes<HTMLElement> {
   tag?: LkSemanticTag;
 }
 
-export default function Text({ tag = 'div', fontClass = 'display2-bold', content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.', ...rest }: LkTextProps) {
-  const textAttrs = useMemo(() => propsToDataAttrs(rest, 'lk-text'), [rest]);
+export default function Text({
+  tag = "div",
+  fontClass = "display2-bold",
+  content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  ...rest
+}: LkTextProps) {
+  const textAttrs = useMemo(() => propsToDataAttrs(rest, "lk-text"), [rest]);
   const Tag = tag;
 
-  return <Tag className={`lk-font-${fontClass}`} {...textAttrs}>{content}</Tag>;
+  return (
+    <Tag className={`lk-font-${fontClass}`} {...textAttrs}>
+      {content}
+    </Tag>
+  );
 }
-
 ```
 
 ### CSS (Reference)
@@ -45,12 +53,11 @@ export default function Text({ tag = 'div', fontClass = 'display2-bold', content
   display: block;
   margin: 0;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -60,13 +67,12 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 
 Controls the visual style of the text via LiftKit font tokens.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkFontClass` | `display2-bold` | Any LiftKit font class |
+| **Expected Type** | **Default Value** | **Acceptable Values**  |
+| ----------------- | ----------------- | ---------------------- |
+| `LkFontClass`     | `display2-bold`   | Any LiftKit font class |
 
 ```tsx
 <Text fontClass="body" />
-
 ```
 
 ### **content**
@@ -76,12 +82,11 @@ Controls the visual style of the text via LiftKit font tokens.
 Sets the text content of the rendered element.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | Lorem ipsum… | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | Lorem ipsum…      | Any string            |
 
 ```tsx
 <Text content="Custom display text." />
-
 ```
 
 ### **tag**
@@ -91,8 +96,8 @@ Sets the text content of the rendered element.
 Sets the HTML tag used for rendering. This is useful for less common tags like `<caption>`, `<article>`, etc.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkSemanticTag` | `div` | Any valid tag name |
+| ----------------- | ----------------- | --------------------- |
+| `LkSemanticTag`   | `div`             | Any valid tag name    |
 
 ```tsx
 <Text tag="caption" />

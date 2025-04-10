@@ -21,17 +21,16 @@ A text input is a simple form control composed of a label, input field, optional
     <p class="caption">Help text (optional)</p>
   </div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkTextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  labelPosition?: 'default' | 'on-input';
+  labelPosition?: "default" | "on-input";
   helpText?: boolean;
   placeholderText?: string;
 }
@@ -40,25 +39,20 @@ export default function TextInput(props: LkTextInputProps) {
   const { children, ...restProps } = props;
 
   const lkTextInputAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-text-input'),
+    () => propsToDataAttrs(restProps, "lk-text-input"),
     [restProps.labelPosition, restProps.helpText, restProps.placeholderText]
   );
 
-  return (
-    <div {...lkTextInputAttrs}>
-      {/* implementation omitted for brevity */}
-    </div>
-  );
+  return <div {...lkTextInputAttrs}>{/* implementation omitted for brevity */}</div>;
 }
-
 ```
 
 ### CSS (Reference)
 
 ```css
 [lk-component="text-input"] [lk-text-input-element="field-wrap"] {
-	appearance: none;
-	moz-appearance: none;
+  appearance: none;
+  moz-appearance: none;
   display: flex;
   padding: 7.76px var(--lk-size-md);
   justify-content: center;
@@ -67,7 +61,7 @@ export default function TextInput(props: LkTextInputProps) {
   flex: 1 0 0;
   border-radius: var(--lk-size-md);
   border: 1px solid var(--lk-outlinevariant);
-  background: #FFF;
+  background: #fff;
   transition: border 0.2s ease-out, outline 0.2s ease-out;
   position: relative;
 }
@@ -96,12 +90,11 @@ export default function TextInput(props: LkTextInputProps) {
 [lk-component="text-input"] [lk-text-input-element="field-wrap"]:focus-within [lk-component="state-layer"] {
   opacity: 0.04;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -112,12 +105,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls the position of the input label. By default, the label appears above the input. When set to `on-input`, the label appears as a floating placeholder and may need additional CSS to shift based on the focus state.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `default` | `default`, `on-input` |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | `default`         | `default`, `on-input` |
 
 ```tsx
 <TextInput labelPosition="on-input" />
-
 ```
 
 ### **helpText**
@@ -127,12 +119,11 @@ Controls the position of the input label. By default, the label appears above th
 Determines whether help text is rendered beneath the field. When `false`, the help text container is omitted entirely.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```tsx
 <TextInput helpText={true} />
-
 ```
 
 ### **placeholderText**
@@ -142,10 +133,9 @@ Determines whether help text is rendered beneath the field. When `false`, the he
 Sets the placeholder text for the input. If left blank or undefined, no placeholder text is rendered.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | *(none)* | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | _(none)_          | Any string            |
 
 ```tsx
 <TextInput placeholderText="Search here..." />
-
 ```

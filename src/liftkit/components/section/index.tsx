@@ -1,18 +1,16 @@
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import styles from "./section.module.css";
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkSectionProps extends React.HTMLAttributes<HTMLElement> {
-  padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'none';
+  padding?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
   container?: React.ReactNode;
 }
 
 export default function Section(props: LkSectionProps) {
   const { container, children, ...restProps } = props;
 
-  const lkSectionAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-section'),
-    [restProps.padding]
-  );
+  const lkSectionAttrs = useMemo(() => propsToDataAttrs(restProps, "lk-section"), [restProps.padding]);
 
   return (
     <section {...lkSectionAttrs}>

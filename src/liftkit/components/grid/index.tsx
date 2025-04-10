@@ -1,7 +1,6 @@
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
-
-
+import styles from "./grid.module.css";
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 // The LiftkitGrid type definition
 interface LkGridProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -15,14 +14,7 @@ export default function Grid(props: LkGridProps) {
   // Do this on every component.
   const { children, ...restProps } = props;
 
-  const lkGridAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-dropdown'),
-    []
-  );
+  const lkGridAttrs = useMemo(() => propsToDataAttrs(restProps, "lk-dropdown"), []);
 
-  return (
-    <div {...lkGridAttrs}>
-      {children}
-    </div>
-  );
+  return <div {...lkGridAttrs}>{children}</div>;
 }

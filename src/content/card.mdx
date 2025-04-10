@@ -9,28 +9,22 @@ A card is an enclosed container that has special rules for padding that solve op
 ### HTML
 
 ```html
-<div 
-	lk-component="card" 
-	lk-card-scale-factor="body" 
-	lk-card-variant="fill" 
-	lk-card-material="flat">
-  <div 
-	  lk-component="slot" 
-	  lk-slot="children"></div>
+<div lk-component="card" lk-card-scale-factor="body" lk-card-variant="fill" lk-card-material="flat">
+  <div lk-component="slot" lk-slot="children"></div>
 </div>
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkCardProps extends React.HTMLAttributes<HTMLDivElement> {
   scaleFactor?: LkFontClass;
-  variant?: 'fill' | 'outline' | 'transparent';
-  material?: 'flat' | 'glass' | 'rubber';
-  opticalCorrection?: 'top' | 'left' | 'right' | 'bottom' | 'x' | 'y' | 'all' | 'none';
+  variant?: "fill" | "outline" | "transparent";
+  material?: "flat" | "glass" | "rubber";
+  opticalCorrection?: "top" | "left" | "right" | "bottom" | "x" | "y" | "all" | "none";
   isClickable?: boolean;
   children?: React.ReactNode;
 }
@@ -39,13 +33,15 @@ export default function Card(props: LkCardProps) {
   const { children, ...restProps } = props;
 
   const lkCardAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-card'),
+    () => propsToDataAttrs(restProps, "lk-card"),
     [restProps.scaleFactor, restProps.variant, restProps.material, restProps.opticalCorrection, restProps.isClickable]
   );
 
   return (
     <div {...lkCardAttrs}>
-      <div lk-component="slot" lk-slot="children">{children}</div>
+      <div lk-component="slot" lk-slot="children">
+        {children}
+      </div>
     </div>
   );
 }
@@ -90,16 +86,36 @@ export default function Card(props: LkCardProps) {
   padding-top: var(--local-offset-factor);
 }
 
-[lk-card-scale-factor="title1"] { --local-offset-factor: var(--title1-offset); }
-[lk-card-scale-factor="title2"] { --local-offset-factor: var(--title2-offset); }
-[lk-card-scale-factor="title3"] { --local-offset-factor: var(--title3-offset); }
-[lk-card-scale-factor="heading"] { --local-offset-factor: var(--heading-offset); }
-[lk-card-scale-factor="subheading"] { --local-offset-factor: var(--subheading-offset); }
-[lk-card-scale-factor="body"] { --local-offset-factor: var(--body-offset); }
-[lk-card-scale-factor="callout"] { --local-offset-factor: var(--callout-offset); }
-[lk-card-scale-factor="label"] { --local-offset-factor: var(--label-offset); }
-[lk-card-scale-factor="caption"] { --local-offset-factor: var(--caption-offset); }
-[lk-card-scale-factor="capline"] { --local-offset-factor: var(--capline-offset); }
+[lk-card-scale-factor="title1"] {
+  --local-offset-factor: var(--title1-offset);
+}
+[lk-card-scale-factor="title2"] {
+  --local-offset-factor: var(--title2-offset);
+}
+[lk-card-scale-factor="title3"] {
+  --local-offset-factor: var(--title3-offset);
+}
+[lk-card-scale-factor="heading"] {
+  --local-offset-factor: var(--heading-offset);
+}
+[lk-card-scale-factor="subheading"] {
+  --local-offset-factor: var(--subheading-offset);
+}
+[lk-card-scale-factor="body"] {
+  --local-offset-factor: var(--body-offset);
+}
+[lk-card-scale-factor="callout"] {
+  --local-offset-factor: var(--callout-offset);
+}
+[lk-card-scale-factor="label"] {
+  --local-offset-factor: var(--label-offset);
+}
+[lk-card-scale-factor="caption"] {
+  --local-offset-factor: var(--caption-offset);
+}
+[lk-card-scale-factor="capline"] {
+  --local-offset-factor: var(--capline-offset);
+}
 
 [lk-card-variant="fill"] {
   background-color: var(--lk-surfacecontainerlowest);
@@ -126,12 +142,11 @@ export default function Card(props: LkCardProps) {
 [lk-card-material="rubber"] {
   /* Placeholder for neumorphic styling */
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -142,12 +157,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls padding and border radius using a complex set of optical correction rules. This prop should match the largest font size used within the card to ensure that spacing and visual rhythm remain balanced.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkFontClass` | `body` | Any `LkFontClass` |
+| ----------------- | ----------------- | --------------------- |
+| `LkFontClass`     | `body`            | Any `LkFontClass`     |
 
 ```tsx
 <Card scaleFactor="display1" />
-
 ```
 
 ### **variant**
@@ -160,13 +174,12 @@ Controls the background behavior of the card using a separate scrim layer.
 - `outline`: Makes the background transparent and applies a subtle border.
 - `transparent`: Removes both background fill and border entirely.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `fill` | `fill`, `outline`, `transparent` |
+| **Expected Type** | **Default Value** | **Acceptable Values**            |
+| ----------------- | ----------------- | -------------------------------- |
+| `string`          | `fill`            | `fill`, `outline`, `transparent` |
 
 ```tsx
 <Card variant="outline" />
-
 ```
 
 ### **material**
@@ -179,9 +192,9 @@ Controls the card's backdrop-filter behavior:
 - `glass`: Adds a blur effect equivalent to the defined `lk-material-prop-thickness`.
 - `rubber`: Reserved for neumorphic styles (empty ruleset for now).
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `flat` | `flat`, `glass`, `rubber` |
+| **Expected Type** | **Default Value** | **Acceptable Values**     |
+| ----------------- | ----------------- | ------------------------- |
+| `string`          | `flat`            | `flat`, `glass`, `rubber` |
 
 ```tsx
 <Card material="glass" />
@@ -193,13 +206,12 @@ Controls the card's backdrop-filter behavior:
 
 Fine-tunes the internal offset adjustments used for optical corrections. Useful when aligning elements more precisely along specific axes or directions.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `top` | `top`, `left`, `right`, `bottom`, `x`, `y`, `all`, `none` |
+| **Expected Type** | **Default Value** | **Acceptable Values**                                     |
+| ----------------- | ----------------- | --------------------------------------------------------- |
+| `string`          | `top`             | `top`, `left`, `right`, `bottom`, `x`, `y`, `all`, `none` |
 
 ```tsx
 <Card opticalCorrection="y" />
-
 ```
 
 ### **isClickable**
@@ -209,8 +221,8 @@ Fine-tunes the internal offset adjustments used for optical corrections. Useful 
 Indicates whether the card should respond to hover/focus interactions. When `true`, a state layer is shown, making it behave more like a button. But you will need to add the click handler yourself.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```tsx
 <Card isClickable={true} />

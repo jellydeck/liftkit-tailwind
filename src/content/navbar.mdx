@@ -23,45 +23,36 @@ At the **tablet breakpoint**, the `[lk-navbar-el="nav-menu"]` becomes a full-scr
     <Row lk-navbar-el="nav-menu">
       <Image />
       <Row>
-        <Row lk-slot="nav-buttons">
-          {navButtons}
-        </Row>
-        <Row lk-slot="nav-dropdowns">
-          {navDropdowns}
-        </Row>
+        <Row lk-slot="nav-buttons">{navButtons}</Row>
+        <Row lk-slot="nav-dropdowns">{navDropdowns}</Row>
       </Row>
 
       <Row>
-        <Row lk-slot="nav-icon-buttons">
-          {iconButtons}
-        </Row>
-        <Row lk-slot="nav-cta-buttons">
-          {ctaButtons}
-        </Row>
+        <Row lk-slot="nav-icon-buttons">{iconButtons}</Row>
+        <Row lk-slot="nav-cta-buttons">{ctaButtons}</Row>
       </Row>
     </Row>
   </div>
   <div lk-navbar-el="color-scrim" />
   <div lk-navbar-el="glass-scrim" />
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
-type LkMaterial = 'flat' | 'glass' | 'rubber';
+type LkMaterial = "flat" | "glass" | "rubber";
 
 interface LkNavBarProps extends React.HTMLAttributes<HTMLDivElement> {
   material?: LkMaterial;
   children?: React.ReactNode;
 }
 
-export default function NavBar({ material = 'flat', children, ...rest }: LkNavBarProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ material }, 'lk-navbar'), [material]);
+export default function NavBar({ material = "flat", children, ...rest }: LkNavBarProps) {
+  const dataAttrs = useMemo(() => propsToDataAttrs({ material }, "lk-navbar"), [material]);
 
   return (
     <div {...dataAttrs} {...rest}>
@@ -69,7 +60,6 @@ export default function NavBar({ material = 'flat', children, ...rest }: LkNavBa
     </div>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -102,12 +92,11 @@ export default function NavBar({ material = 'flat', children, ...rest }: LkNavBa
     opacity: 1;
   }
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -117,11 +106,10 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 
 Controls the background and blur behavior of the navbar. Functions the same as the `material` prop on the `Card` component.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkMaterial` | `flat` | `flat`, `glass`, `rubber` |
+| **Expected Type** | **Default Value** | **Acceptable Values**     |
+| ----------------- | ----------------- | ------------------------- |
+| `LkMaterial`      | `flat`            | `flat`, `glass`, `rubber` |
 
 ```tsx
 <NavBar material="glass" />
-
 ```

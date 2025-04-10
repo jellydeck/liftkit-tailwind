@@ -23,7 +23,7 @@ A `<select>`-like control that visually resembles a text input. It uses the same
 
 ```
 import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import {propsToDataAttrs} from "../utilities"
 
 interface LkDropdownChipProps extends React.InputHTMLAttributes<HTMLInputElement> {
   labelPosition?: 'default' | 'on-input';
@@ -66,7 +66,7 @@ export default function DropdownChip(props: LkDropdownChipProps) {
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -77,8 +77,8 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls whether the dropdown list is visible. This value is passed down to the `DropdownList` component and used to animate the state-layer and other visibility toggles. When active, the chip displays its state-layer at 15% opacity.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```
 <DropdownChip isActive={true} />

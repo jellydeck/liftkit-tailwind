@@ -24,14 +24,13 @@ When active:
   </div>
   <div class="lk-indicator"></div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkTabLinkProps extends React.HTMLAttributes<HTMLDivElement> {
   selected?: boolean;
@@ -42,12 +41,12 @@ interface LkTabLinkProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function TabLink({
   selected = false,
-  fontClass = 'body',
-  indicatorClass = 'lk-indicator',
+  fontClass = "body",
+  indicatorClass = "lk-indicator",
   children,
   ...rest
 }: LkTabLinkProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ selected }, 'lk-tab-link'), [selected]);
+  const dataAttrs = useMemo(() => propsToDataAttrs({ selected }, "lk-tab-link"), [selected]);
 
   return (
     <div {...dataAttrs} {...rest}>
@@ -60,7 +59,6 @@ export default function TabLink({
     </div>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -86,12 +84,11 @@ export default function TabLink({
 [lk-tab-link-selected="true"] > .lk-indicator {
   opacity: 1;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -102,12 +99,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Indicates whether the tab is currently active. Controls the indicator and text weight.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```tsx
 <TabLink selected={true}>Tab</TabLink>
-
 ```
 
 ### **fontClass**
@@ -117,12 +113,11 @@ Indicates whether the tab is currently active. Controls the indicator and text w
 Sets the font size/style of the text inside the tab.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkFontClass` | `'body'` | Any LkFontClass value |
+| ----------------- | ----------------- | --------------------- |
+| `LkFontClass`     | `'body'`          | Any LkFontClass value |
 
 ```tsx
 <TabLink fontClass="title3">Tab</TabLink>
-
 ```
 
 ### **indicatorClass**
@@ -132,10 +127,9 @@ Sets the font size/style of the text inside the tab.
 Allows you to override the default styles of the indicator using a custom class.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `lk-indicator` | Any valid class name |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | `lk-indicator`    | Any valid class name  |
 
 ```tsx
 <TabLink indicatorClass="my-indicator-style" />
-
 ```

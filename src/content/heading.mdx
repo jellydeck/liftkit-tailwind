@@ -10,16 +10,15 @@ A `Heading` is a semantic heading element (h1 through h6) whose HTML tag is dete
 
 ```html
 <h2 lk-component="heading" class="lk-font-display2-bold">Heading</h2>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
-type LkHeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type LkHeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 interface LkHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   tag?: LkHeadingTag;
@@ -27,13 +26,21 @@ interface LkHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   content?: string;
 }
 
-export default function Heading({ tag = 'h2', fontClass = 'display2-bold', content = 'Heading', ...rest }: LkHeadingProps) {
-  const headingAttrs = useMemo(() => propsToDataAttrs(rest, 'lk-heading'), [rest]);
+export default function Heading({
+  tag = "h2",
+  fontClass = "display2-bold",
+  content = "Heading",
+  ...rest
+}: LkHeadingProps) {
+  const headingAttrs = useMemo(() => propsToDataAttrs(rest, "lk-heading"), [rest]);
   const Tag = tag;
 
-  return <Tag className={`lk-font-${fontClass}`} {...headingAttrs}>{content}</Tag>;
+  return (
+    <Tag className={`lk-font-${fontClass}`} {...headingAttrs}>
+      {content}
+    </Tag>
+  );
 }
-
 ```
 
 ### CSS (Reference)
@@ -43,12 +50,11 @@ export default function Heading({ tag = 'h2', fontClass = 'display2-bold', conte
   display: block;
   margin: 0;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -58,13 +64,12 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 
 Controls the HTML tag used for the heading.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkHeadingTag` | `h2` | `h1`, `h2`, `h3`, `h4`, `h5`, `h6` |
+| **Expected Type** | **Default Value** | **Acceptable Values**              |
+| ----------------- | ----------------- | ---------------------------------- |
+| `LkHeadingTag`    | `h2`              | `h1`, `h2`, `h3`, `h4`, `h5`, `h6` |
 
 ```tsx
 <Heading tag="h1" />
-
 ```
 
 ### **fontClass**
@@ -73,13 +78,12 @@ Controls the HTML tag used for the heading.
 
 Controls the visual style of the heading via LiftKit font tokens.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkFontClass` | `display2-bold` | Any LiftKit font class |
+| **Expected Type** | **Default Value** | **Acceptable Values**  |
+| ----------------- | ----------------- | ---------------------- |
+| `LkFontClass`     | `display2-bold`   | Any LiftKit font class |
 
 ```tsx
 <Heading fontClass="title1-bold" />
-
 ```
 
 ### **content**
@@ -89,10 +93,9 @@ Controls the visual style of the heading via LiftKit font tokens.
 Sets the text content of the heading element.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `Heading` | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | `Heading`         | Any string            |
 
 ```tsx
 <Heading content="Welcome to LiftKit" />
-
 ```

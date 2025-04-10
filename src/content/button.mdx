@@ -9,7 +9,7 @@ The button is a bit unique compared to previous components. It responds to mouse
 ### HTML
 
 ```tsx
-import Row from './liftkit';
+import Row from "./liftkit";
 
 <button
   lk-component="button"
@@ -19,26 +19,29 @@ import Row from './liftkit';
   type="button"
 >
   <div lk-button-content-wrap>
-    <i lk-component="icon" lk-icon-position="start">arrow_back</i>
+    <i lk-component="icon" lk-icon-position="start">
+      arrow_back
+    </i>
     <span lk-button-child="button-text">Button Text</span>
-    <i lk-component="icon" lk-icon-position="end">arrow_forward</i>
+    <i lk-component="icon" lk-icon-position="end">
+      arrow_forward
+    </i>
   </div>
   <div lk-component="state-layer" lk-state-layer-color="var(--lk-primary)" />
-</button>
-
+</button>;
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  variant?: 'fill' | 'outline' | 'text';
+  variant?: "fill" | "outline" | "text";
   color?: keyof LkColor;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   material?: string;
   startIcon?: string;
   endIcon?: string;
@@ -48,22 +51,29 @@ export default function Button(props: LkButtonProps) {
   const { label, startIcon, endIcon, children, ...restProps } = props;
 
   const lkButtonAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-button'),
+    () => propsToDataAttrs(restProps, "lk-button"),
     [restProps.variant, restProps.color, restProps.size, restProps.material, startIcon, endIcon]
   );
 
   return (
     <button {...lkButtonAttrs} type="button">
       <div lk-button-content-wrap>
-        {startIcon && <i lk-component="icon" lk-icon-position="start">{startIcon}</i>}
+        {startIcon && (
+          <i lk-component="icon" lk-icon-position="start">
+            {startIcon}
+          </i>
+        )}
         <span lk-button-child="button-text">{label}</span>
-        {endIcon && <i lk-component="icon" lk-icon-position="end">{endIcon}</i>}
+        {endIcon && (
+          <i lk-component="icon" lk-icon-position="end">
+            {endIcon}
+          </i>
+        )}
       </div>
       <div lk-component="state-layer" lk-state-layer-color="var(--lk-primary)" />
     </button>
   );
 }
-
 ```
 
 ### CSS
@@ -99,12 +109,11 @@ export default function Button(props: LkButtonProps) {
 [lk-component="button"] > [lk-button-content-wrap] > [lk-icon-position="end"] {
   padding-right: var(--button-padX-sideWithIcon);
 }
-
 ```
 
 ### Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -115,12 +124,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls the button’s text. The content of the button’s text equals the value of the label prop.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | *(required)* | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | _(required)_      | Any string            |
 
 ```tsx
 <Button label="Submit" />
-
 ```
 
 ### variant
@@ -129,13 +137,12 @@ Controls the button’s text. The content of the button’s text equals the valu
 
 Controls whether the button is filled, outlined, or simply text.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `fill` | `fill`, `outline`, `text` |
+| **Expected Type** | **Default Value** | **Acceptable Values**     |
+| ----------------- | ----------------- | ------------------------- |
+| `string`          | `fill`            | `fill`, `outline`, `text` |
 
 ```tsx
 <Button variant="outline" />
-
 ```
 
 ### color
@@ -145,12 +152,11 @@ Controls whether the button is filled, outlined, or simply text.
 Controls the color based on the variant. For `fill`, it controls the background. For `outline` and `text`, it controls text and border color, and state layer color.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `keyof LkColor` | `lk-primary` | Any LkColor key |
+| ----------------- | ----------------- | --------------------- |
+| `keyof LkColor`   | `lk-primary`      | Any LkColor key       |
 
 ```tsx
 <Button color="lk-tertiarycontainer" />
-
 ```
 
 ### size
@@ -160,12 +166,11 @@ Controls the color based on the variant. For `fill`, it controls the background.
 Controls the button size. If `sm`, button font size is subheading. If `lg`, button font size is title3.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkSizeUnit` | `md` | `sm`, `md`, `lg` |
+| ----------------- | ----------------- | --------------------- |
+| `LkSizeUnit`      | `md`              | `sm`, `md`, `lg`      |
 
 ```tsx
 <Button size="lg" />
-
 ```
 
 ### material
@@ -175,12 +180,11 @@ Controls the button size. If `sm`, button font size is subheading. If `lg`, butt
 Controls miscellaneous filters.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | *(optional)* | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | _(optional)_      | Any string            |
 
 ```tsx
 <Button material="frosted" />
-
 ```
 
 ### startIcon
@@ -189,13 +193,12 @@ Controls miscellaneous filters.
 
 Controls the icon on the left side. Sets the value inside the `<i>` element with `lk-icon-position="start"`.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `public` | Any Material Symbol name |
+| **Expected Type** | **Default Value** | **Acceptable Values**    |
+| ----------------- | ----------------- | ------------------------ |
+| `string`          | `public`          | Any Material Symbol name |
 
 ```tsx
 <Button startIcon="arrow_back" />
-
 ```
 
 ### endIcon
@@ -204,11 +207,10 @@ Controls the icon on the left side. Sets the value inside the `<i>` element with
 
 Controls the icon on the right side. Sets the value inside the `<i>` element with `lk-icon-position="end"`.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | *(none)* | Any Material Symbol name |
+| **Expected Type** | **Default Value** | **Acceptable Values**    |
+| ----------------- | ----------------- | ------------------------ |
+| `string`          | _(none)_          | Any Material Symbol name |
 
 ```tsx
 <Button endIcon="arrow_forward" />
-
 ```

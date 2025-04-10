@@ -21,26 +21,31 @@ The `IconButton` is a `<button>` element that wraps a single `Icon` component. I
   </div>
   <div lk-component="state-layer"></div>
 </button>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
-type LkSizeUnit = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type LkSizeUnit = "xs" | "sm" | "md" | "lg" | "xl";
 
 interface LkIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: string;
-  variant?: 'fill' | 'outline' | 'text';
+  variant?: "fill" | "outline" | "text";
   color?: string; // LkColor
   size?: LkSizeUnit;
 }
 
-export default function IconButton({ icon, variant = 'fill', color = 'lk-primary', size = 'md', ...rest }: LkIconButtonProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ variant, color, size }, 'lk-icon-button'), [variant, color, size]);
+export default function IconButton({
+  icon,
+  variant = "fill",
+  color = "lk-primary",
+  size = "md",
+  ...rest
+}: LkIconButtonProps) {
+  const dataAttrs = useMemo(() => propsToDataAttrs({ variant, color, size }, "lk-icon-button"), [variant, color, size]);
 
   return (
     <button type="button" {...dataAttrs} {...rest}>
@@ -51,7 +56,6 @@ export default function IconButton({ icon, variant = 'fill', color = 'lk-primary
     </button>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -108,12 +112,11 @@ export default function IconButton({ icon, variant = 'fill', color = 'lk-primary
 [lk-icon-button-size="xl"] {
   font-size: var(--title2-font-size);
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -124,12 +127,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Sets the Material Symbol name used inside the Icon.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | *(none)* | Any Material Symbol |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | _(none)_          | Any Material Symbol   |
 
 ```tsx
 <IconButton icon="favorite" />
-
 ```
 
 ### **variant**
@@ -138,13 +140,12 @@ Sets the Material Symbol name used inside the Icon.
 
 Controls the button's visual style—solid fill, outline, or text only.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `fill` | `fill`, `outline`, `text` |
+| **Expected Type** | **Default Value** | **Acceptable Values**     |
+| ----------------- | ----------------- | ------------------------- |
+| `string`          | `fill`            | `fill`, `outline`, `text` |
 
 ```tsx
 <IconButton variant="outline" />
-
 ```
 
 ### **color**
@@ -153,13 +154,12 @@ Controls the button's visual style—solid fill, outline, or text only.
 
 Sets the color token applied to the state layer and icon color.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` (LkColor) | `lk-primary` | Any LiftKit color token |
+| **Expected Type**  | **Default Value** | **Acceptable Values**   |
+| ------------------ | ----------------- | ----------------------- |
+| `string` (LkColor) | `lk-primary`      | Any LiftKit color token |
 
 ```tsx
 <IconButton color="lk-error" />
-
 ```
 
 ### **size**
@@ -168,11 +168,10 @@ Sets the color token applied to the state layer and icon color.
 
 Controls the component's font size, which scales all child units proportionally.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkSizeUnit` | `md` | `xs`, `sm`, `md`, `lg`, `xl` |
+| **Expected Type** | **Default Value** | **Acceptable Values**        |
+| ----------------- | ----------------- | ---------------------------- |
+| `LkSizeUnit`      | `md`              | `xs`, `sm`, `md`, `lg`, `xl` |
 
 ```tsx
 <IconButton size="lg" />
-
 ```

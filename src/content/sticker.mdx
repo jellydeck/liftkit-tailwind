@@ -14,22 +14,21 @@ The internal `Text` component uses a default `fontClass` of `'label'`.
 <div lk-component="sticker">
   <div lk-slot="content">sticker</div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkStickerProps extends React.HTMLAttributes<HTMLDivElement> {
   content?: string;
   color?: string; // Should match allowed subset of LkColor from Button
 }
 
-export default function Sticker({ content = 'sticker', color = 'lk-primary', ...rest }: LkStickerProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ color }, 'lk-sticker'), [color]);
+export default function Sticker({ content = "sticker", color = "lk-primary", ...rest }: LkStickerProps) {
+  const dataAttrs = useMemo(() => propsToDataAttrs({ color }, "lk-sticker"), [color]);
 
   return (
     <div {...dataAttrs} {...rest}>
@@ -37,7 +36,6 @@ export default function Sticker({ content = 'sticker', color = 'lk-primary', ...
     </div>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -53,12 +51,11 @@ export default function Sticker({ content = 'sticker', color = 'lk-primary', ...
   line-height: var(--label-line-height);
   font-size: var(--label-font-size);
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -69,12 +66,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls the sticker label content.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `"sticker"` | Any string |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | `"sticker"`       | Any string            |
 
 ```tsx
 <Sticker content="Beta" />
-
 ```
 
 ### **color**
@@ -83,11 +79,10 @@ Controls the sticker label content.
 
 Controls the background color of the sticker, and the `on` color is automatically applied to the text.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkColor` | `lk-primary` | Same subset as Button component |
+| **Expected Type** | **Default Value** | **Acceptable Values**           |
+| ----------------- | ----------------- | ------------------------------- |
+| `LkColor`         | `lk-primary`      | Same subset as Button component |
 
 ```tsx
 <Sticker color="lk-success" />
-
 ```

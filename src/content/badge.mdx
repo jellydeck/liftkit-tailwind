@@ -12,17 +12,16 @@ The badge is used as a sort of rich status indicator. It’s a `<div>` with an i
 <div lk-component="badge">
   <span lk-component="icon" lk-icon-name="info"></span>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  scale?: 'md' | 'lg';
+  scale?: "md" | "lg";
   color?: keyof LkColor;
   icon?: React.ReactNode;
 }
@@ -30,19 +29,17 @@ interface LkBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Badge(props: LkBadgeProps) {
   const { icon, children, ...restProps } = props;
 
-  const lkBadgeAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-badge'),
-    [restProps.scale, restProps.color]
-  );
+  const lkBadgeAttrs = useMemo(() => propsToDataAttrs(restProps, "lk-badge"), [restProps.scale, restProps.color]);
 
   return (
     <div {...lkBadgeAttrs}>
-      <div lk-component="slot" lk-slot="icon">{icon}</div>
+      <div lk-component="slot" lk-slot="icon">
+        {icon}
+      </div>
       {children}
     </div>
   );
 }
-
 ```
 
 ### CSS
@@ -55,7 +52,7 @@ export default function Badge(props: LkBadgeProps) {
   align-items: center;
   gap: 10px;
   border-radius: var(--lk-size-sm);
-  background: var(--LiftKit-Default-sys-light-surface-container, #EEEDF8);
+  background: var(--LiftKit-Default-sys-light-surface-container, #eeedf8);
   font-size: var(--lk-size-md);
 }
 
@@ -157,12 +154,11 @@ export default function Badge(props: LkBadgeProps) {
   background-color: var(--lk-surfacevariant);
   color: var(--lk-onsurfacevariant);
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -173,27 +169,25 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls the font size of the badge’s container, thereby scaling the size of the whole badge (since everything’s defined in `em` units).
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkSizeUnit` | `md` | `md`, `lg` |
+| ----------------- | ----------------- | --------------------- |
+| `LkSizeUnit`      | `md`              | `md`, `lg`            |
 
 ```tsx
 <Badge scale="lg" />
-
 ```
 
 **color**
 
 **Description**
 
-Controls the background color of the badge container and the text color of the contained icon. Assigns the appropriate "on-*" color to the icon for contrast.
+Controls the background color of the badge container and the text color of the contained icon. Assigns the appropriate "on-\*" color to the icon for contrast.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `keyof LkColor` | `lk-surfacecontainer` | Any `LkColor` key |
+| **Expected Type** | **Default Value**     | **Acceptable Values** |
+| ----------------- | --------------------- | --------------------- |
+| `keyof LkColor`   | `lk-surfacecontainer` | Any `LkColor` key     |
 
 ```tsx
 <Badge color="lk-warning" />
-
 ```
 
 **icon**
@@ -202,11 +196,10 @@ Controls the background color of the badge container and the text color of the c
 
 A React component or HTML element that appears inside the badge.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `React.ReactNode` | *(none)* | Any element or component |
+| **Expected Type** | **Default Value** | **Acceptable Values**    |
+| ----------------- | ----------------- | ------------------------ |
+| `React.ReactNode` | _(none)_          | Any element or component |
 
 ```tsx
 <Badge icon={<Icon>info</Icon>} />
-
 ```

@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
-import Text from '@/liftkit/components/text';
+import styles from "./tab-link.module.css";
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
+import Text from "@/liftkit/components/text";
 
 interface LkTabLinkProps extends React.HTMLAttributes<HTMLDivElement> {
   selected?: boolean;
@@ -11,12 +12,12 @@ interface LkTabLinkProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function TabLink({
   selected = false,
-  fontClass = 'body',
-  indicatorClass = 'lk-indicator',
+  fontClass = "body",
+  indicatorClass = "lk-indicator",
   children,
   ...rest
 }: LkTabLinkProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ selected }, 'lk-tab-link'), [selected]);
+  const dataAttrs = useMemo(() => propsToDataAttrs({ selected }, "lk-tab-link"), [selected]);
 
   return (
     <div {...dataAttrs} {...rest}>

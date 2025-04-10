@@ -1,3 +1,4 @@
+import styles from "./snackbar.module.css";
 import { useMemo } from "react";
 import { propsToDataAttrs } from "./utilities";
 import Badge from "@/liftkit/components/badge";

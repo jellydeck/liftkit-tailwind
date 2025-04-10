@@ -25,14 +25,13 @@ The `MenuList` component is an absolutely positioned dropdown container for `Men
     <div lk-component="menu-item">Menu Item 2</div>
   </div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkMenuListProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen?: boolean;
@@ -40,26 +39,28 @@ interface LkMenuListProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export default function MenuList({ isOpen = false, maxHeight = 'var(--lk-size-4xl)', children, ...rest }: LkMenuListProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ open: isOpen }, 'lk-menu-list'), [isOpen]);
+export default function MenuList({
+  isOpen = false,
+  maxHeight = "var(--lk-size-4xl)",
+  children,
+  ...rest
+}: LkMenuListProps) {
+  const dataAttrs = useMemo(() => propsToDataAttrs({ open: isOpen }, "lk-menu-list"), [isOpen]);
 
   return (
     <div
       style={{
-        maxHeight: isOpen ? maxHeight : '0px',
-        display: isOpen ? 'block' : 'none',
-        overflow: isOpen ? 'auto' : 'hidden'
+        maxHeight: isOpen ? maxHeight : "0px",
+        display: isOpen ? "block" : "none",
+        overflow: isOpen ? "auto" : "hidden",
       }}
       {...dataAttrs}
       {...rest}
     >
-      <div lk-component="column">
-        {children}
-      </div>
+      <div lk-component="column">{children}</div>
     </div>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -93,12 +94,11 @@ export default function MenuList({ isOpen = false, maxHeight = 'var(--lk-size-4x
   overflow: hidden;
   display: none;
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -109,12 +109,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls whether the dropdown is shown or hidden.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```tsx
 <MenuList isOpen={true}>...</MenuList>
-
 ```
 
 ### **maxHeight**
@@ -123,13 +122,12 @@ Controls whether the dropdown is shown or hidden.
 
 Sets the maximum height of the dropdown. Overflow becomes scrollable if content exceeds this value.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `var(--lk-size-4xl)` | Any CSS length or LK size var |
+| **Expected Type** | **Default Value**    | **Acceptable Values**         |
+| ----------------- | -------------------- | ----------------------------- |
+| `string`          | `var(--lk-size-4xl)` | Any CSS length or LK size var |
 
 ```tsx
 <MenuList maxHeight="var(--lk-size-3xl)" />
-
 ```
 
 Slots
@@ -141,12 +139,11 @@ Slots
 The list of items or components inside the menu.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `ReactNode` | none | Any valid content |
+| ----------------- | ----------------- | --------------------- |
+| `ReactNode`       | none              | Any valid content     |
 
 ```tsx
 <MenuList>
   <MenuItem>Settings</MenuItem>
 </MenuList>
-
 ```

@@ -24,14 +24,13 @@ Border radius is also `var(--lk-size-lg) * var(--lk-halfstep-dec)`.
   <i lk-component="icon" lk-icon-position="end">chevron_right</i>
   <div lk-component="state-layer"></div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkMenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
   startIcon?: string;
@@ -40,18 +39,25 @@ interface LkMenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function MenuItem({ startIcon, endIcon, children, ...rest }: LkMenuItemProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs(rest, 'lk-menu-item'), [rest]);
+  const dataAttrs = useMemo(() => propsToDataAttrs(rest, "lk-menu-item"), [rest]);
 
   return (
     <div {...dataAttrs}>
-      {startIcon && <i lk-component="icon" lk-icon-position="start">{startIcon}</i>}
+      {startIcon && (
+        <i lk-component="icon" lk-icon-position="start">
+          {startIcon}
+        </i>
+      )}
       <span>{children}</span>
-      {endIcon && <i lk-component="icon" lk-icon-position="end">{endIcon}</i>}
+      {endIcon && (
+        <i lk-component="icon" lk-icon-position="end">
+          {endIcon}
+        </i>
+      )}
       <div lk-component="state-layer"></div>
     </div>
   );
 }
-
 ```
 
 ### CSS (Reference)
@@ -84,12 +90,11 @@ export default function MenuItem({ startIcon, endIcon, children, ...rest }: LkMe
 [lk-component="menu-item"]:not(:has([lk-icon-position="end"])) {
   padding-right: var(--body-font-size);
 }
-
 ```
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -100,12 +105,11 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 An optional icon displayed at the start of the item.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | none | Any Material Symbol |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | none              | Any Material Symbol   |
 
 ```tsx
 <MenuItem startIcon="home">Item</MenuItem>
-
 ```
 
 ### **endIcon**
@@ -115,12 +119,11 @@ An optional icon displayed at the start of the item.
 An optional icon displayed at the end of the item.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | none | Any Material Symbol |
+| ----------------- | ----------------- | --------------------- |
+| `string`          | none              | Any Material Symbol   |
 
 ```tsx
 <MenuItem endIcon="chevron_right">Item</MenuItem>
-
 ```
 
 ### **children**
@@ -129,9 +132,9 @@ An optional icon displayed at the end of the item.
 
 The text or content inside the menu item.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `ReactNode` | none | Any renderable content |
+| **Expected Type** | **Default Value** | **Acceptable Values**  |
+| ----------------- | ----------------- | ---------------------- |
+| `ReactNode`       | none              | Any renderable content |
 
 ```tsx
 <MenuItem>Settings</MenuItem>

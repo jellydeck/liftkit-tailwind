@@ -21,7 +21,7 @@ The DropdownList is a `div` container that wraps a `Column` component containing
 
 ```
 import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import {propsToDataAttrs} from "../utilities"
 
 interface LkDropdownListProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen?: boolean;
@@ -69,7 +69,7 @@ export default function DropdownList(props: LkDropdownListProps) {
 
 ## Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ## Props
 
@@ -80,8 +80,8 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 Controls the visibility of the dropdown list using a collapsing max-height effect. When true, the list expands and becomes scrollable. When false, it collapses and hides overflow.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```
 <DropdownList isOpen={true} />

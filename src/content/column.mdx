@@ -10,18 +10,17 @@
 <div lk-component="column" lk-column-align-items="start" lk-column-justify-content="start">
   <div lk-component="slot" lk-slot="children"></div>
 </div>
-
 ```
 
 ### TypeScript
 
 ```tsx
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
 interface LkColumnProps extends React.HTMLAttributes<HTMLDivElement> {
-  alignItems?: 'start' | 'center' | 'end' | 'stretch';
-  justifyContent?: 'start' | 'center' | 'end' | 'space-between' | 'space-around';
+  alignItems?: "start" | "center" | "end" | "stretch";
+  justifyContent?: "start" | "center" | "end" | "space-between" | "space-around";
   children?: React.ReactNode;
 }
 
@@ -29,13 +28,12 @@ export default function Column(props: LkColumnProps) {
   const { children, ...restProps } = props;
 
   const lkColumnAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-column'),
+    () => propsToDataAttrs(restProps, "lk-column"),
     [restProps.alignItems, restProps.justifyContent]
   );
 
   return <div {...lkColumnAttrs}>{children}</div>;
 }
-
 ```
 
 ### CSS
@@ -51,23 +49,40 @@ export default function Column(props: LkColumnProps) {
 }
 
 /* align-items variations */
-[lk-column-align-items="start"] { align-items: flex-start; }
-[lk-column-align-items="center"] { align-items: center; }
-[lk-column-align-items="end"] { align-items: flex-end; }
-[lk-column-align-items="stretch"] { align-items: stretch; }
+[lk-column-align-items="start"] {
+  align-items: flex-start;
+}
+[lk-column-align-items="center"] {
+  align-items: center;
+}
+[lk-column-align-items="end"] {
+  align-items: flex-end;
+}
+[lk-column-align-items="stretch"] {
+  align-items: stretch;
+}
 
 /* justify-content variations */
-[lk-column-justify-content="start"] { justify-content: flex-start; }
-[lk-column-justify-content="center"] { justify-content: center; }
-[lk-column-justify-content="end"] { justify-content: flex-end; }
-[lk-column-justify-content="space-between"] { justify-content: space-between; }
-[lk-column-justify-content="space-around"] { justify-content: space-around; }
-
+[lk-column-justify-content="start"] {
+  justify-content: flex-start;
+}
+[lk-column-justify-content="center"] {
+  justify-content: center;
+}
+[lk-column-justify-content="end"] {
+  justify-content: flex-end;
+}
+[lk-column-justify-content="space-between"] {
+  justify-content: space-between;
+}
+[lk-column-justify-content="space-around"] {
+  justify-content: space-around;
+}
 ```
 
 ### Combine with Native HTML Attributes
 
-You can set any other *native* HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
+You can set any other _native_ HTML attribute (className, style, id, etc.) on the component by passing it as a prop.
 
 ### Props
 
@@ -77,15 +92,14 @@ You can set any other *native* HTML attribute (className, style, id, etc.) on th
 
 Modifies the `align-items` CSS property. Controls how elements align with respect to the y-axis.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `start` | `start`, `center`, `end`, `stretch` |
+| **Expected Type** | **Default Value** | **Acceptable Values**               |
+| ----------------- | ----------------- | ----------------------------------- |
+| `string`          | `start`           | `start`, `center`, `end`, `stretch` |
 
 ### Sample Implementation
 
 ```tsx
 <Column alignItems="center">{children}</Column>
-
 ```
 
 ### justifyContent
@@ -94,13 +108,12 @@ Modifies the `align-items` CSS property. Controls how elements align with respec
 
 Modifies the `justify-content` CSS property. Controls how flex children are distributed.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `start` | `start`, `center`, `end`, `space-between`, `space-around` |
+| **Expected Type** | **Default Value** | **Acceptable Values**                                     |
+| ----------------- | ----------------- | --------------------------------------------------------- |
+| `string`          | `start`           | `start`, `center`, `end`, `space-between`, `space-around` |
 
 ### Sample Implementation
 
 ```tsx
 <Column justifyContent="space-between">{children}</Column>
-
 ```

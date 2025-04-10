@@ -5,14 +5,15 @@
 ### HTML
 
 ```html
-html
-CopyEdit
-<div lk-component="row"
-     lk-row-align-items="start"
-     lk-row-justify-content="start"
-     lk-row-wrap-children="false"
-     lk-row-default-child-behavior="ignoreFlexRules"
-     lk-row-gap="none">
+html CopyEdit
+<div
+  lk-component="row"
+  lk-row-align-items="start"
+  lk-row-justify-content="start"
+  lk-row-wrap-children="false"
+  lk-row-default-child-behavior="ignoreFlexRules"
+  lk-row-gap="none"
+>
   {children}
 </div>
 ```
@@ -20,46 +21,43 @@ CopyEdit
 ### TypeScript
 
 ```tsx
-tsx
-CopyEdit
-import { useMemo } from 'react';
-import { propsToDataAttrs } from './utilities';
+tsx;
+CopyEdit;
+import { useMemo } from "react";
+import { propsToDataAttrs } from "../utilities";
 
-type LkSizeUnit =
-  | '3xs' | '2xs' | 'xs' | 'sm' | 'md'
-  | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+type LkSizeUnit = "3xs" | "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 
 interface LkRowProps extends React.HTMLAttributes<HTMLDivElement> {
-  alignItems?: 'start' | 'center' | 'end' | 'stretch';
-  justifyContent?: 'start' | 'center' | 'end' | 'space-between' | 'space-around';
+  alignItems?: "start" | "center" | "end" | "stretch";
+  justifyContent?: "start" | "center" | "end" | "space-between" | "space-around";
   gap?: LkSizeUnit;
   wrapChildren?: boolean;
-  defaultChildBehavior?: 'auto-grow' | 'auto-shrink' | 'ignoreFlexRules' | 'ignoreIntrinsicSize';
+  defaultChildBehavior?: "auto-grow" | "auto-shrink" | "ignoreFlexRules" | "ignoreIntrinsicSize";
 }
 
 export default function Row(props: LkRowProps) {
   const { children, ...restProps } = props;
 
   const lkRowAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-row'),
-    [restProps.alignItems, restProps.justifyContent, restProps.gap, restProps.wrapChildren, restProps.defaultChildBehavior]
+    () => propsToDataAttrs(restProps, "lk-row"),
+    [
+      restProps.alignItems,
+      restProps.justifyContent,
+      restProps.gap,
+      restProps.wrapChildren,
+      restProps.defaultChildBehavior,
+    ]
   );
 
-  return (
-    <div {...lkRowAttrs}>
-      {children}
-    </div>
-  );
+  return <div {...lkRowAttrs}>{children}</div>;
 }
-
 ```
 
 ### CSS
 
 ```css
-css
-CopyEdit
-[lk-component="row"] {
+css CopyEdit [lk-component="row"] {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -67,33 +65,75 @@ CopyEdit
 }
 
 /* Align Items */
-[lk-row-align-items="start"] { align-items: flex-start; }
-[lk-row-align-items="center"] { align-items: center; }
-[lk-row-align-items="end"] { align-items: flex-end; }
-[lk-row-align-items="stretch"] { align-items: stretch; }
+[lk-row-align-items="start"] {
+  align-items: flex-start;
+}
+[lk-row-align-items="center"] {
+  align-items: center;
+}
+[lk-row-align-items="end"] {
+  align-items: flex-end;
+}
+[lk-row-align-items="stretch"] {
+  align-items: stretch;
+}
 
 /* Justify Content */
-[lk-row-justify-content="start"] { justify-content: flex-start; }
-[lk-row-justify-content="center"] { justify-content: center; }
-[lk-row-justify-content="end"] { justify-content: flex-end; }
-[lk-row-justify-content="space-between"] { justify-content: space-between; }
-[lk-row-justify-content="space-around"] { justify-content: space-around; }
+[lk-row-justify-content="start"] {
+  justify-content: flex-start;
+}
+[lk-row-justify-content="center"] {
+  justify-content: center;
+}
+[lk-row-justify-content="end"] {
+  justify-content: flex-end;
+}
+[lk-row-justify-content="space-between"] {
+  justify-content: space-between;
+}
+[lk-row-justify-content="space-around"] {
+  justify-content: space-around;
+}
 
 /* Gap */
-[lk-row-gap="3xs"] { gap: var(--lk-size-3xs); }
-[lk-row-gap="2xs"] { gap: var(--lk-size-2xs); }
-[lk-row-gap="xs"] { gap: var(--lk-size-xs); }
-[lk-row-gap="sm"] { gap: var(--lk-size-sm); }
-[lk-row-gap="md"] { gap: var(--lk-size-md); }
-[lk-row-gap="lg"] { gap: var(--lk-size-lg); }
-[lk-row-gap="xl"] { gap: var(--lk-size-xl); }
-[lk-row-gap="2xl"] { gap: var(--lk-size-2xl); }
-[lk-row-gap="3xl"] { gap: var(--lk-size-3xl); }
-[lk-row-gap="4xl"] { gap: var(--lk-size-4xl); }
+[lk-row-gap="3xs"] {
+  gap: var(--lk-size-3xs);
+}
+[lk-row-gap="2xs"] {
+  gap: var(--lk-size-2xs);
+}
+[lk-row-gap="xs"] {
+  gap: var(--lk-size-xs);
+}
+[lk-row-gap="sm"] {
+  gap: var(--lk-size-sm);
+}
+[lk-row-gap="md"] {
+  gap: var(--lk-size-md);
+}
+[lk-row-gap="lg"] {
+  gap: var(--lk-size-lg);
+}
+[lk-row-gap="xl"] {
+  gap: var(--lk-size-xl);
+}
+[lk-row-gap="2xl"] {
+  gap: var(--lk-size-2xl);
+}
+[lk-row-gap="3xl"] {
+  gap: var(--lk-size-3xl);
+}
+[lk-row-gap="4xl"] {
+  gap: var(--lk-size-4xl);
+}
 
 /* Wrap */
-[lk-row-wrap-children="true"] { flex-wrap: wrap; }
-[lk-row-wrap-children="false"] { flex-wrap: nowrap; }
+[lk-row-wrap-children="true"] {
+  flex-wrap: wrap;
+}
+[lk-row-wrap-children="false"] {
+  flex-wrap: nowrap;
+}
 
 /* Default Child Behavior */
 [lk-row-default-child-behavior="auto-grow"] > * {
@@ -114,7 +154,6 @@ CopyEdit
 [lk-row-default-child-behavior="ignoreIntrinsicSize"] > * {
   flex-basis: 0;
 }
-
 ```
 
 ---
@@ -124,8 +163,7 @@ CopyEdit
 You can set any native HTML attributes (like `className` or `style`) on the component by passing them directly as props:
 
 ```tsx
-
-<Row className="my-custom-row" style={{ margin: '2rem' }} />
+<Row className="my-custom-row" style={{ margin: "2rem" }} />
 ```
 
 ---
@@ -138,9 +176,9 @@ You can set any native HTML attributes (like `className` or `style`) on the comp
 
 Modifies the `align-items` CSS property. Controls how elements align with respect to the y-axis.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `"start"` | `"start"`, `"center"`, `"end"`, `"stretch"` |
+| **Expected Type** | **Default Value** | **Acceptable Values**                       |
+| ----------------- | ----------------- | ------------------------------------------- |
+| `string`          | `"start"`         | `"start"`, `"center"`, `"end"`, `"stretch"` |
 
 ```tsx
 <Row alignItems="center" />
@@ -154,9 +192,9 @@ Modifies the `align-items` CSS property. Controls how elements align with respec
 
 Modifies the `justify-content` CSS property. Controls how flex children are distributed.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | `"start"` | `"start"`, `"center"`, `"end"`, `"space-between"`, `"space-around"` |
+| **Expected Type** | **Default Value** | **Acceptable Values**                                               |
+| ----------------- | ----------------- | ------------------------------------------------------------------- |
+| `string`          | `"start"`         | `"start"`, `"center"`, `"end"`, `"space-between"`, `"space-around"` |
 
 ```tsx
 <Row justifyContent="space-between" />
@@ -170,9 +208,9 @@ Modifies the `justify-content` CSS property. Controls how flex children are dist
 
 Modifies the `gap` between children.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `LkSizeUnit` | `"none"` | `'3xs'`, `'2xs'`, `'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'2xl'`, `'3xl'`, `'4xl'` |
+| **Expected Type** | **Default Value** | **Acceptable Values**                                                               |
+| ----------------- | ----------------- | ----------------------------------------------------------------------------------- |
+| `LkSizeUnit`      | `"none"`          | `'3xs'`, `'2xs'`, `'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'2xl'`, `'3xl'`, `'4xl'` |
 
 ```tsx
 <Row gap="lg" />
@@ -187,8 +225,8 @@ Modifies the `gap` between children.
 Controls the `flex-wrap` property. If true, the children wrap to the next line.
 
 | **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `boolean` | `false` | `true`, `false` |
+| ----------------- | ----------------- | --------------------- |
+| `boolean`         | `false`           | `true`, `false`       |
 
 ```tsx
 <Row wrapChildren={true} />
@@ -202,9 +240,9 @@ Controls the `flex-wrap` property. If true, the children wrap to the next line.
 
 Controls all children's flex behavior. For simple layout use cases, lets you apply uniform flex settings to all children.
 
-| **Expected Type** | **Default Value** | **Acceptable Values** |
-| --- | --- | --- |
-| `string` | *(none)* | `"auto-grow"`, `"auto-shrink"`, `"ignoreFlexRules"`, `"ignoreIntrinsicSize"` |
+| **Expected Type** | **Default Value** | **Acceptable Values**                                                        |
+| ----------------- | ----------------- | ---------------------------------------------------------------------------- |
+| `string`          | _(none)_          | `"auto-grow"`, `"auto-shrink"`, `"ignoreFlexRules"`, `"ignoreIntrinsicSize"` |
 
 ```tsx
 <Row defaultChildBehavior="auto-grow" />
