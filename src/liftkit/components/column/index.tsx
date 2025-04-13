@@ -16,5 +16,5 @@ export default function Column(props: LkColumnProps) {
     [restProps.alignItems, restProps.justifyContent]
   );
 
-  return <div {...lkColumnAttrs}>{children}</div>;
+  return <div lk-component="column" {...lkColumnAttrs}>{children}</div>;
 }

@@ -19,7 +19,7 @@ export default function Grid({
   );
 
   return (
-    <div lk-component="grid" {...lkGridAttrs}>
+    <div lk-component="grid" {...lkGridAttrs} >
       {children}
     </div>
   );

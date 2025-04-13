@@ -3,24 +3,39 @@ import { useMemo } from 'react';
 import { propsToDataAttrs } from '../utilities';
 
 interface LkCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  scaleFactor?: LkFontClass;
+  scaleFactor?: LkFontClass | 'none';
   variant?: 'fill' | 'outline' | 'transparent';
   material?: 'flat' | 'glass' | 'rubber';
   opticalCorrection?: 'top' | 'left' | 'right' | 'bottom' | 'x' | 'y' | 'all' | 'none';
   isClickable?: boolean;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export default function Card(props: LkCardProps) {
-  const { children, ...restProps } = props;
+  const { children, className, ...restProps } = props;
 
-  const lkCardAttrs = useMemo(
-    () => propsToDataAttrs(restProps, 'lk-card'),
-    [restProps.scaleFactor, restProps.variant, restProps.material, restProps.opticalCorrection, restProps.isClickable]
-  );
+  function filterCustomProps(props: LkCardProps) {
+    const nativeDivProps: (keyof React.HTMLAttributes<HTMLDivElement>)[] = [
+      'children', 'className', 'id', 'style', 'onClick', 'onMouseEnter', 'onMouseLeave', 
+      'onFocus', 'onBlur', 'tabIndex', 'role', 'title'
+    ];
+
+    return Object.keys(props).reduce((customProps, key) => {
+      if (!nativeDivProps.includes(key as keyof React.HTMLAttributes<HTMLDivElement>)) {
+        const kebabKey = `lk-${key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`;
+        customProps[kebabKey] = props[key as keyof LkCardProps];
+      }
+      return customProps;
+    }, {} as Record<string, any>);
+  }
+
+  const customProps = filterCustomProps(restProps);
+
+
 
   return (
-    <div {...lkCardAttrs}>
+    <div {...customProps} className={className}>
       <div lk-component="slot" lk-slot="children">{children}</div>
     </div>
   );

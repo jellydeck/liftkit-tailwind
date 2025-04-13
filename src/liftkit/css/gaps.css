@@ -1,31 +1,30 @@
 /* Gaps */
 @import "globals.css";
 
-
 .gap-2xs {
-  gap: var(--2xs);
+  gap: var(--lk-size-2xs);
 }
 
 .gap-xs {
-  gap: var(--xs);
+  gap: var(--lk-size-xs);
 }
 
 .gap-sm {
-  gap: var(--sm);
+  gap: var(--lk-size-sm);
 }
 
 .gap-md {
-  gap: var(--md);
+  gap: var(--lk-size-md);
 }
 
 .gap-lg {
-  gap: var(--lg);
+  gap: var(--lk-size-lg);
 }
 
 .gap-xl {
-  gap: var(--xl);
+  gap: var(--lk-size-xl);
 }
 
 .gap-2xl {
-  gap: var(--2xl);
+  gap: var(--lk-size-2xl);
 }

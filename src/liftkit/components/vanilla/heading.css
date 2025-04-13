@@ -1,0 +1,6 @@
+@import '../../liftkit-core.css';
+
+[lk-component="heading"] {
+  display: block;
+  margin: 0;
+}

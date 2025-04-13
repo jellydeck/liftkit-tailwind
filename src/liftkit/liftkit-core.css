@@ -4,7 +4,6 @@
 
 :root {
   font-size: 16px;
-  font-family: "Inter", sans-serif;
 
   --lk-scalefactor: 1.618;
   --lk-wholestep: 1.618;
@@ -406,7 +405,6 @@ input:focus-visible {
 body {
   color: var(--lk-onbackground);
   background: var(--lk-background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -435,7 +433,6 @@ a {
 }
 
 body {
-  font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: var(--lk-onbackground);

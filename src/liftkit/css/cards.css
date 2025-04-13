@@ -25,11 +25,11 @@
 } */
 .scaleFactor-zero {
   padding: 0px;
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
 }
 
 .scaleFactor-zero:hover {
-  padding: var(--xs);
+  padding: var(--lk-size-xs);
 }
 
 .scaleFactor-display1 {

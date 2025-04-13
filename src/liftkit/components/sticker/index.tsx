@@ -1,18 +1,20 @@
-import styles from "./sticker.module.css";
-import { useMemo } from "react";
-import { propsToDataAttrs } from "../utilities";
-import Text from "./text";
+import { getOnToken } from "@/lib/colorUtils";
+import Text from "@/liftkit/components/text";
 
 interface LkStickerProps extends React.HTMLAttributes<HTMLDivElement> {
   content?: string;
-  color?: string; // Should match allowed subset of LkColor from Button
+  color?: LkColorWithOnToken; // Should match allowed subset of LkColor from Button
 }
 
-export default function Sticker({ content = "sticker", color = "lk-primary", ...rest }: LkStickerProps) {
-  const dataAttrs = useMemo(() => propsToDataAttrs({ color }, "lk-sticker"), [color]);
+export default function Sticker({ 
+  content = "Sticker", 
+  color = "primarycontainer", 
+  ...restprops }: LkStickerProps) {
+
+  const iconColor = getOnToken(color) as LkColor;
 
   return (
-    <div {...dataAttrs} {...rest}>
+    <div lk-component="sticker" {...restprops}>
       <Text fontClass="label" content={content} />
     </div>
   );

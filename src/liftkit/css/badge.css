@@ -2,8 +2,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--xs);
-  border-radius: var(--sm);
+  padding: var(--lk-size-xs);
+  border-radius: var(--lk-size-sm);
 }
 
 .badge.material-symbols-outlined {

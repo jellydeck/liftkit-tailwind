@@ -2,7 +2,7 @@
   transform: scale(0);
   transition: transform 0.2s ease;
   overflow: hidden;
-  padding: var(--xs);
+  padding: var(--lk-size-xs);
 }
 
 .dropdown-menu.active {
@@ -10,17 +10,17 @@
 }
 
 .dropdown-menu-item {
-display: flex;
-align-items: center;
-gap: var(--sm);
-overflow: hidden;
-position: relative;
-border-radius: var(--xs);
-padding: var(--sm);
-width: 100%;
-cursor: 'pointer';
+  display: flex;
+  align-items: center;
+  gap: var(--lk-size-sm);
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--lk-size-xs);
+  padding: var(--lk-size-sm);
+  width: 100%;
+  cursor: "pointer";
 }
 
 .dropdown-menu-item * {
-pointer-events: none;
+  pointer-events: none;
 }

@@ -13,8 +13,8 @@
   --sm: calc(var(--lineHeightInEms) * calc(1 / var(--halfstep)))
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.022em;
   font-size: var(--display1-font-size);
@@ -32,8 +32,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.022em;
   font-size: var(--display2-font-size);
@@ -51,8 +51,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.022em;
   font-size: var(--title1-font-size);
@@ -69,8 +69,8 @@
   --2xs: calc(var(--lineHeightInEms) * var(--quarterstep-dec));
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.02em;
   font-size: var(--title2-font-size);
@@ -88,8 +88,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.017em;
   font-size: var(--title3-font-size);
@@ -107,8 +107,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.014em;
   font-size: var(--heading-font-size);
@@ -126,8 +126,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.007em;
   font-size: var(--subheading-font-size);
@@ -144,8 +144,8 @@
 
 
   --lg: calc(1em * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.011em;
   cursor: default;
@@ -164,8 +164,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.009em;
   font-size: var(--callout-font-size);
@@ -183,8 +183,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.004em;
   font-size: var(--label-font-size);
@@ -204,8 +204,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.007em;
   font-size: var(--caption-font-size);
@@ -223,8 +223,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: 0.0618em;
   text-transform: uppercase;
@@ -244,8 +244,8 @@
 
 
   --lg: calc(1em * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.022em;
   font-size: var(--display1-font-size);
@@ -263,8 +263,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.022em;
   font-size: var(--display2-font-size);
@@ -282,8 +282,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.022em;
   font-size: var(--title1-font-size);
@@ -300,8 +300,8 @@
   --2xs: calc(var(--lineHeightInEms) * var(--quarterstep-dec));
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.02em;
   font-size: var(--title2-font-size);
@@ -319,8 +319,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.017em;
   font-size: var(--title3-font-size);
@@ -338,8 +338,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.014em;
   font-size: var(--heading-font-size);
@@ -357,8 +357,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.007em;
   font-size: var(--subheading-font-size);
@@ -375,8 +375,8 @@
 
 
   --lg: calc(1em * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.011em;
   padding: 0;
@@ -396,8 +396,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.009em;
   font-size: var(--callout-font-size);
@@ -416,8 +416,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.004em;
   font-size: var(--label-font-size);
@@ -435,8 +435,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: -0.007em;
   font-size: var(--caption-font-size);
@@ -454,8 +454,8 @@
 
 
   --lg: calc(var(--lineHeightInEms) * var(--wholestep));
-  --xl: calc(var(--lg) * var(--wholestep));
-  --2xl: calc(var(--xl) * var(--wholestep));
+  --xl: calc(var(--lk-size-lg) * var(--wholestep));
+  --2xl: calc(var(--lk-size-xl) * var(--wholestep));
 
   letter-spacing: 0.0618em;
   text-transform: uppercase;
@@ -558,20 +558,20 @@
 .tiptap ol {
   margin-top: 1em;
   margin-bottom: 1em;
-  padding-left: var(--xl);
+  padding-left: var(--lk-size-xl);
 }
 
 .tiptap ul {
   margin-top: 1em;
   margin-bottom: 1em;
-  padding-left: var(--xl);
+  padding-left: var(--lk-size-xl);
   line-height: var(--wholestep);
 }
 
 .tiptap blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
-  padding-left: var(--md);
+  padding-left: var(--lk-size-md);
   margin-left: 2.618em;
   font-size: 1em;
   line-height: var(--wholestep);
@@ -605,7 +605,7 @@
 .tiptap hr {
 border: none;
 border-top: 1px solid var(--lk-outline);
-margin: var(--lg) 0px;
+margin: var(--lk-size-lg) 0px;
 
 }
 

@@ -20,7 +20,7 @@
   position: relative;
   z-index: 1;
   background-color: var(--lk-surface);
-  border-radius: var(--md);
+  border-radius: var(--lk-size-md);
   overflow: hidden;
   max-height: 61.8vh;
   max-width: 61.8vw;

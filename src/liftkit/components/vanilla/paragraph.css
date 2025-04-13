@@ -1,0 +1,6 @@
+@import '../../liftkit-core.css';
+
+[lk-component="paragraph"] {
+  display: block;
+  margin: 0;
+}

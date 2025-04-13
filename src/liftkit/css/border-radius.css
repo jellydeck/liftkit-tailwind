@@ -1,31 +1,31 @@
 @import "globals.css";
 
 .border-radius-2xs {
-  border-radius: var(--2xs);
+  border-radius: var(--lk-size-2xs);
 }
 
 .border-radius-xs {
-  border-radius: var(--xs);
+  border-radius: var(--lk-size-xs);
 }
 
 .border-radius-sm {
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
 }
 
 .border-radius-md {
-  border-radius: var(--md);
+  border-radius: var(--lk-size-md);
 }
 
 .border-radius-lg {
-  border-radius: var(--lg);
+  border-radius: var(--lk-size-lg);
 }
 
 .border-radius-xl {
-  border-radius: var(--xl);
+  border-radius: var(--lk-size-xl);
 }
 
 .border-radius-2xl {
-  border-radius: var(--2xl);
+  border-radius: var(--lk-size-2xl);
 }
 
 .border-radius-circle {
