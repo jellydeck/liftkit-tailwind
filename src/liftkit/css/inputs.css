@@ -1,9 +1,9 @@
 .text-input-wrap {
   position: relative;
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
   border: 1px solid var(--lk-outlinevariant);
   outline: 3px solid transparent;
-  transition: outline 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out,;
+  transition: outline 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out;
   align-self: stretch;
 }
 
@@ -18,12 +18,12 @@
 .text-input-wrap.underline:hover {
   border-color: var(--lk-tertiaryfixed);
   border: 1px solid var(--lk-outline);
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
 }
 
 .select-field-wrap {
   position: relative;
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
   border: 1px solid var(--lk-outlinevariant);
   outline: 3px solid transparent;
   transition: outline 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -38,8 +38,8 @@
 
   display: inline-flex;
   line-height: var(--halfstep);
-  border-radius: var(--sm);
-  padding: var(--md);
+  border-radius: var(--lk-size-sm);
+  padding: var(--lk-size-md);
   gap: var(--pad-y);
 
   /* For debugging */
@@ -68,7 +68,7 @@
 
 .text-input-wrap.underline:focus-within {
   border-color: var(--lk-tertiaryfixed);
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
   border: 1px solid var(--lk-tertiaryfixed);
   outline: none;
 }
@@ -107,7 +107,7 @@
   justify-content: center;
   align-items: center;
   gap: 0px;
-  padding-right: var(--xs);
+  padding-right: var(--lk-size-xs);
 
   position: absolute;
   right: 0px;
@@ -120,7 +120,7 @@
 
 .text-input {
   flex: 1 0 0;
-  padding: var(--md);
+  padding: var(--lk-size-md);
   border: none;
   width: 100%;
   background-color: transparent;
@@ -133,7 +133,7 @@
 }
 
 .text-input-wrap .state-layer {
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
 }
 
 .text-input-wrap.underline .state-layer {
@@ -145,7 +145,7 @@
 .select-field-wrap label {
   position: absolute;
   top: 50%;
-  left: var(--md);
+  left: var(--lk-size-md);
   transform: translateY(-50%);
   transition: all 0.2s ease-out;
   color: var(--lk-onsurfacevariant);
@@ -158,7 +158,7 @@
   letter-spacing: -0.004em;
   font-size: var(--caption-font-size);
   font-weight: 500;
-  padding: 0 var(--xs);
+  padding: 0 var(--lk-size-xs);
   color: var(--lk-onsurfacevariant);
 }
 
@@ -168,9 +168,9 @@
   letter-spacing: -0.004em;
   font-size: var(--caption-font-size);
   font-weight: 500;
-  padding: 0 var(--xs);
+  padding: 0 var(--lk-size-xs);
   z-index: 2;
-  border-radius: var(--xs);
+  border-radius: var(--lk-size-xs);
 }
 
 .text-input-wrap.underline label {
@@ -179,7 +179,7 @@
 
 .text-input-wrap.underline:hover label,
 .text-input-wrap.underline:focus-within label {
-  left: var(--md);
+  left: var(--lk-size-md);
 }
 
 .text-input-wrap.underline label.shrink {
@@ -189,8 +189,8 @@
 
 .text-input-wrap.underline:hover label.shrink,
 .text-input-wrap.underline:focus-within label.shrink {
-  padding: 0 var(--xs);
-  left: var(--md);
+  padding: 0 var(--lk-size-xs);
+  left: var(--lk-size-md);
 }
 
 .text-input-wrap.underline input[type="text"] {
@@ -199,9 +199,8 @@
 
 .text-input-wrap.underline:hover input[type="text"],
 .text-input-wrap.underline:focus-within input[type="text"] {
-  padding-left: var(--md);
+  padding-left: var(--lk-size-md);
 }
-
 
 /* Select Fields */
 
@@ -213,9 +212,9 @@
 
 .custom-combobox {
   width: 100%;
-  padding: var(--sm);
+  padding: var(--lk-size-sm);
   box-sizing: border-box;
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
   border: 1px solid var(--lk-outlinevariant);
   outline: 1px solid transparent;
   transition: outline 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -249,15 +248,15 @@
 .custom-toggle {
   position: absolute;
   top: 50%;
-  right: calc(var(--xl) * var(--quarterstep-dec));
+  right: calc(var(--lk-size-xl) * var(--quarterstep-dec));
   background-color: transparent;
   border: none;
   transition: background-color 0.2s ease;
   display: flex;
-  padding: var(--2xs) var(--xs);
+  padding: var(--2xs) var(--lk-size-xs);
   justify-content: center;
   align-items: center;
-  border-radius: var(--xs);
+  border-radius: var(--lk-size-xs);
   transform: translateY(-50%);
 }
 
@@ -279,11 +278,11 @@
   background: var(--lk-surfacecontainerlowest);
   color: var(--lk-onsurface);
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  border-radius: var(--md);
+  border-radius: var(--lk-size-md);
   z-index: 10;
   list-style: none;
   margin: 0;
-  padding: var(--md);
+  padding: var(--lk-size-md);
   overflow: hidden;
   height: auto;
   transform: scale(0);
@@ -292,7 +291,7 @@
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   opacity: 0; /* Set initial opacity to 0 */
   pointer-events: none;
-  row-gap: var(--xs);
+  row-gap: var(--lk-size-xs);
 }
 
 .custom-options.open {
@@ -354,9 +353,9 @@
 }
 
 .file-upload-field.dotted {
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
   border: 1px dashed var(--lk-outlinevariant);
-  padding: var(--sm);
+  padding: var(--lk-size-sm);
   background: var(--lk-surfacecontainer);
 }
 
@@ -368,9 +367,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  gap: var(--sm);
-  padding: var(--sm);
-  padding-right: var(--md);
+  gap: var(--lk-size-sm);
+  padding: var(--lk-size-sm);
+  padding-right: var(--lk-size-md);
   opacity: 0;
   z-index: 2;
 }
@@ -386,4 +385,3 @@
 
 .file-upload-display-label.dotted {
 }
-

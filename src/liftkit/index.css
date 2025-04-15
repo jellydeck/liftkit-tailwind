@@ -1,3 +1,4 @@
+@import './liftkit-core.css';
 @import './css/material-icons/index.css';
 @import './css/align-items.css';
 @import './css/align-self.css';
@@ -52,3 +53,6 @@
 @import "./css/breaks.css";
 @import "./css/accordion.css";
 @import './css/background-colors.css';
+@import './css/code.css';
+@import './css/whitespace.css';
+@import './components/vanilla/index.css';

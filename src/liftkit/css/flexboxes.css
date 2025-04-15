@@ -60,8 +60,8 @@
 .flex-wrap-children {
   display: flex;
   flex-wrap: wrap;
-  column-gap: var(--sm);
-  row-gap: var(--sm);
+  column-gap: var(--lk-size-sm);
+  row-gap: var(--lk-size-sm);
 }
 
 .fill-container {

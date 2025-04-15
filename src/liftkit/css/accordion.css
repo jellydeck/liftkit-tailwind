@@ -1,6 +1,6 @@
 .accordion {
   overflow: hidden;
-  border-radius: var(--sm);
+  border-radius: var(--lk-size-sm);
   border: 1px solid transparent;
   transition: border 0.2s ease;
 }
@@ -27,7 +27,7 @@
 }
 
 .accordion.open .accordion-trigger {
-  padding: var(--md);
+  padding: var(--lk-size-md);
 }
 
 .accordion.open .accordion-content {

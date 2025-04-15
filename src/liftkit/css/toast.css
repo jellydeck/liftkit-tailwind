@@ -1,6 +1,6 @@
 .toast-wrap {
   position: fixed;
-  top: calc(-1 * var(--2xl));
+  top: calc(-1 * var(--lk-size-2xl));
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
@@ -16,7 +16,7 @@
 
 .toast-wrap.active {
   position: fixed;
-  top: var(--2xl);
+  top: var(--lk-size-2xl);
   left: 50%;
   transform: translateX(-50%);
 
@@ -28,4 +28,3 @@
   display: flex;
   flex-direction: column;
 }
-

@@ -13,20 +13,20 @@
     text-transform: capitalize;
     /* unique to sticker */
 
-    padding: var(--2xs) var(--xs);
-    border-radius: var(--xs);
+    padding: var(--lk-size-2xs) var(--lk-size-xs);
+    border-radius: var(--lk-size-xs);;
 
     align-items:center;
-    gap: var(--xs);
+    gap: var(--lk-size-xs);;
   }
 
 
   .sticker.start-icon {
-    padding: var(--2xs) var(--xs) var(--2xs) var(--2xs);
+    padding: var(--lk-size-2xs) var(--lk-size-xs) var(--lk-size-2xs) var(--lk-size-2xs);;
   }
 
   .sticker.end-icon {
-    padding: var(--2xs) var(--2xs) var(--2xs) var(--xs);
+    padding: var(--lk-size-2xs) var(--lk-size-2xs) var(--lk-size-2xs) var(--lk-size-xs);
   }
 
   .sticker.outlined {

@@ -7,11 +7,11 @@
 }
 
 .h-xl {
-  height: var(--xl);
+  height: var(--lk-size-xl);
 }
 
 .h-2xl {
-  height: var(--2xl);
+  height: var(--lk-size-2xl);
 }
 
 .h-4xl {
@@ -19,9 +19,9 @@
 }
 
 .max-h-4xl {
-  max-height: var(--4xl);
+  max-height: var(--lk-size-4xl);
 }
 
 .min-h-4xl {
-  min-height: var(--4xl);
+  min-height: var(--lk-size-4xl);
 }

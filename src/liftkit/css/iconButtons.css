@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--xs);
+  padding: var(--lk-size-xs);
   border-radius: 100em;
   cursor: pointer;
   font-size: calc(1em * var(--quarterstep)); /* borrowed from heading */
@@ -23,7 +23,7 @@
 }
 
 .icon-button.lowpad {
-  padding: var(--3xs);
+  padding: var(--lk-size-3xs);
 }
 
 .icon-button.xs {
