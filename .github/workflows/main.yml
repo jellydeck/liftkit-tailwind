@@ -3,6 +3,10 @@ on:
     branches:
     - main
     - release/*
+    
+permissions:
+  contents: read
+  issues: write 
 
 jobs:
   create_issues:
@@ -10,4 +14,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
-    - uses: dtinth/todo-actions@v0.2.0
+    - name: Run Issue Bot
+      uses: juulsn/todo-issue@main
+      with:
+        excludePattern: '^(node_modules/)'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
