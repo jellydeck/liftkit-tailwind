@@ -4,23 +4,32 @@
 
 :root {
   font-size: 1rem;
-  --lk-scalefactor: 1.618; /* these are the only two you set manually */
+  --lk-scalefactor: 1.618;
+  /* these are the only two you set manually */
 
 
-  --lk-wholestep: 1.618; /* equals scalefactor */
-  --lk-halfstep: 1.272; /* sqrt wholestep */
-  --lk-quarterstep: 1.128; /* sqrt halfstep */
-  --lk-eighthstep: 1.062; /* sqrt quarterstep */
+  --lk-wholestep: 1.618;
+  /* equals scalefactor */
+  --lk-halfstep: 1.272;
+  /* sqrt wholestep */
+  --lk-quarterstep: 1.128;
+  /* sqrt halfstep */
+  --lk-eighthstep: 1.062;
+  /* sqrt quarterstep */
 
-  --lk-wholestep-dec: 0.618; /* wholestep -1 */ 
-  --lk-halfstep-dec: 0.272; /* halfstep -1 */ 
-  --lk-quarterstep-dec: 0.128; /* quarterstep -1 */ 
-  --lk-eighthstep-dec: 0.062; /* eighthstep -1 */ 
+  --lk-wholestep-dec: 0.618;
+  /* wholestep -1 */
+  --lk-halfstep-dec: 0.272;
+  /* halfstep -1 */
+  --lk-quarterstep-dec: 0.128;
+  /* quarterstep -1 */
+  --lk-eighthstep-dec: 0.062;
+  /* eighthstep -1 */
 
   --lk-size-md: 1em;
   /* It's okay to use em here because the root font size
                   has been manually set to 1rem */
-
+  /* TODO: [3hr] Change calc method to use the new pow() and round feature */
   --lk-size-sm: calc(1em / var(--lk-scalefactor));
   --lk-size-xs: calc(var(--lk-size-sm) / var(--lk-scalefactor));
   --lk-size-2xs: calc(var(--lk-size-xs) / var(--lk-scalefactor));
@@ -252,8 +261,8 @@
 
   /************ Font Size Vars ************/
 
-  /* DEBUGGING TIP: The CSS rules for calc() define unique laws for adding, subtracating, multiplying, and dividing. 
-   * In addition and subtraction, both sides must have the same unit. 
+  /* DEBUGGING TIP: The CSS rules for calc() define unique laws for adding, subtracating, multiplying, and dividing.
+   * In addition and subtraction, both sides must have the same unit.
    * In multiplication, one side must be unitless.
    * In division, the right side must be unitless.
   */
@@ -287,7 +296,7 @@
   --capline-line-height: var(--lk-halfstep);
 
   /* Optical Top Padding Offsets and Border Radii for Cards */
-  /* Produce padding values for the insides of cards or other containers on sides that 
+  /* Produce padding values for the insides of cards or other containers on sides that
      optically look imbalanced even though mathematically they're symmetrical. Like in the first liftkit video. */
 
   --display1-offset: calc(var(--display1-font-size) * calc(var(--display1-line-height) / var(--lk-wholestep)));
@@ -395,9 +404,9 @@
   }
 }
 
-/* Everything from here is done to disable native display behavior of HTML elements 
+/* Everything from here is done to disable native display behavior of HTML elements
 
-/* TODO: Consider a more robust noramlizing solution. there's gotta be open source solutions to this. 
+/* TODO: Consider a more robust noramlizing solution. there's gotta be open source solutions to this.
 
 */
 
@@ -483,7 +492,7 @@ button span {
 }
 
 /* TODO:
-/* Literally everything after this might be an artifact from previous dev cycles. Feel free to experiment with removal. 
+/* Literally everything after this might be an artifact from previous dev cycles. Feel free to experiment with removal.
 */
 
 @media screen and (max-width: 992px) {
@@ -855,7 +864,8 @@ u,
 del,
 ins {
   all: unset;
-  display: revert; /* keeps block/inline/block-list behaviors */
+  display: revert;
+  /* keeps block/inline/block-list behaviors */
   font: inherit;
   color: inherit;
   text-align: inherit;

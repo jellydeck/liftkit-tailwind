@@ -1,3 +1,4 @@
+/* TODO: [1hr] Consider Merging these into a singular file Many of these are very small files and make navigation harder */
 @import './liftkit-core.css';
 @import './css/material-icons/index.css';
 @import './css/align-items.css';
@@ -10,7 +11,7 @@
 @import './css/font-color.css';
 @import './css/flexboxes.css';
 @import './css/gaps.css';
-@import './css/grid.css'; 
+@import './css/grid.css';
 @import './css/icons.css';
 @import './css/iconButtons.css';
 @import './css/justify-content.css';
