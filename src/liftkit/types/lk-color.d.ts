@@ -1,10 +1,10 @@
-export {};
+export { };
 
 declare global {
 
-/**
- * Represents all valid LiftKit color tokens.
- */
+  /**
+   * Represents all valid LiftKit color tokens.
+   */
   type LkColor =
     | "primary"
     | "onprimary"
@@ -74,7 +74,8 @@ declare global {
    * It does not include "lk-outline," however, because "lk-onoutline" does not exist.
    * The one exception to this rule is the 'surfacecontainer' tokens, which pair with 'lk-onsurface' as their on-token.
    */
-    type LkColorWithOnToken = 
+  // TODO: Missing some types casing issues
+  type LkColorWithOnToken =
     | "primary"
     | "primarycontainer"
     | "secondary"
@@ -91,7 +92,7 @@ declare global {
     | "infocontainer"
     | "background"
     | "surface"
-    | "surfacevariant" 
+    | "surfacevariant"
     | "surfacecontainerlowest" //todo: make sure component assigns "onsurface" to text when these are present
     | "surfacecontainerlow"
     | "surfacecontainer"
@@ -99,7 +100,7 @@ declare global {
     | "surfacecontainerhighest"
     | "inversesurface"
 
-    type LkOnColor = 
+  type LkOnColor =
     | "onprimary"
     | "onprimarycontainer"
     | "onsecondary"
@@ -116,7 +117,7 @@ declare global {
     | "oninfocontainer"
     | "onbackground"
     | "onsurface"
-    | "onsurfacevariant" 
+    | "onsurfacevariant"
     | "inverseonsurface"
 }
 
