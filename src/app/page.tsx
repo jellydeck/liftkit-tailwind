@@ -17,6 +17,7 @@ import DropdownList from "@/registry/nextjs/components/dropdown-list";
 import Snackbar from "@/registry/nextjs/components/snackbar";
 import NavBar from "@/registry/nextjs/components/navbar";
 import IconButton from "@/registry/nextjs/components/icon-button";
+import Select from "@/registry/nextjs/components/select";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -65,9 +66,42 @@ export default function Home() {
   const tabLabels = ["Home", "Profile", "Settings"];
   const variants = ["fill", "outline", "text"] as const;
   const buttonSizes = ["sm", "md", "lg"] as const;
+  const [openDropdowns, setOpenDropdowns] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
+  const [selectedValue, setSelectedValue] = useState("");
+  console.log("selected value", selectedValue);
+  // const handleChange = (value: string) => {
+  //   setSelectedValue(value);
+  //   console.log(value);
+  // };
 
+  // const options = [
+  //   { label: "Option 1", value: "option1" },
+  //   { label: "Option 2", value: "option2" },
+  //   { label: "Option 3", value: "option3" },
+  // ];
+
+  const toggleDropdown = (id: string) => {
+    setOpenDropdowns((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleMenu = (id: string) => {
+    setOpenMenus((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
   return (
     <div className={styles.page}>
+      <Select
+        label="Choose Option"
+        name="mySelect"
+        value={selectedValue}
+        onChange={(e) => setSelectedValue(e.target.value)}
+        options={[
+          { label: "One", value: "One" },
+          { label: "Two", value: "Two" },
+        ]}
+      />
       {/* Refactored Dropdown Menu Component */}
       <div className="flex-h justify-content-space-between w-full">
         {["A", "B", "C"].map((key, index) => {
