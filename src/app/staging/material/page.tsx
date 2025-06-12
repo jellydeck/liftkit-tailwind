@@ -1,0 +1,66 @@
+import React from "react";
+import Section from "@/registry/nextjs/components/section";
+import Row from "@/registry/nextjs/components/row";
+import Column from "@/registry/nextjs/components/column";
+import Container from "@/registry/nextjs/components/containers";
+import MaterialLayer from "@/registry/nextjs/components/material-layer";
+
+export default function MaterialStaging() {
+  const scaleFactors: LkFontClass[] = [
+    "display1",
+    "display2",
+    "title1",
+    "title2",
+    "title3",
+    "heading",
+    "subheading",
+    "body",
+    "callout",
+    "label",
+    "caption",
+    "capline",
+  ];
+
+  const buttonVariants = ["fill", "outline", "text"];
+
+  /** Defining a temporary style to use for testing material */
+  const tempCardStyles: React.CSSProperties = {
+    display: "block",
+    position: "relative",
+    borderRadius: "1em",
+    padding: "1em",
+    overflow: "hidden",
+  };
+
+  return (
+    <div className="bg-surfacecontainer" style={{ backgroundImage: "url(/testimage.png)" }}>
+      <Section padding="md">
+        <Container>
+          <h1 className="display2-bold m-bottom-md">Card Staging</h1>
+          <Row gap="md">
+            <div style={tempCardStyles}>
+              <SampleCardContent />
+              <MaterialLayer
+                material="glass"
+
+              />
+            </div>
+          </Row>
+        </Container>
+      </Section>
+    </div>
+  );
+}
+
+function SampleCardContent() {
+  return (
+    <div style={{ position: "relative", zIndex: 1 }}>
+      <h2 className="heading">Heading</h2>
+      <p className="subheading">Subheading</p>
+      <p className="body m-top-sm">
+        Chainlift is a company that makes design kits for programmers. Founded in 2021 by Garrett Mack from his attic in
+        Irvine.
+      </p>
+    </div>
+  );
+}

@@ -1,21 +1,22 @@
 import { useMemo } from "react";
 import { propsToDataAttrs } from "@/registry/nextjs/lib/utilities";
 import "@/registry/nextjs/components/card/card.css";
+import MaterialLayer from "@/registry/nextjs/components/material-layer";
 
 export interface LkCardProps extends React.HTMLAttributes<HTMLDivElement> {
   scaleFactor?: LkFontClass | "none";
   variant?: "fill" | "outline" | "transparent";
-  material?: "flat" | "glass";
-  materialThickness?: "thick" | "default" | "thin"; // Optional, not added to type def yet. only has an effect if material === glass
+  material?: "flat" | "glass"; //TODO: Integrate these material controls with the new MaterialLayer component features
+  materialProps?: LkMatProps;
   opticalCorrection?: "top" | "left" | "right" | "bottom" | "x" | "y" | "all" | "none";
   isClickable?: boolean;
-  bgColor?: LkColor; //optional. does not need to have an "on" token because handled via bg global utility class, which assigns text color
+  bgColor?: LkColorWithOnToken; //optional. does not need to have an "on" token because handled via bg global utility class, which assigns text color
   className?: string; //optional. explicitly listing here because we need to control how it mixes in with other styles controlled by classes
   children?: React.ReactNode;
 }
 /**
  * A flexible card component that supports various visual styles and behaviors.
- * 
+ *
  * @param scaleFactor - LkFontClass. Scales card according to this font size. Should be whatever the largest font size in the card is.
  * @param variant - Visual variant. "fill," "outline," or "transparent." Defaults to "fill"
  * @param material - Material style of the card (e.g., "flat", "glass"). Defaults to "flat"
@@ -26,18 +27,18 @@ export interface LkCardProps extends React.HTMLAttributes<HTMLDivElement> {
  * @param bgColor - Background color of the card. Defaults to "surface"
  * @param className - Additional CSS classes to apply
  * @param restProps - Additional props passed through to the root div element
- * 
+ *
  * @returns A card component with configurable styling and material effects
  */
 export default function Card({
   scaleFactor = "body",
   variant = "fill",
   material = "flat",
-  materialThickness,
+  materialProps = {},
   opticalCorrection = "none",
   isClickable,
   children,
-  bgColor = "surface",
+  bgColor,
   className,
   ...restProps
 }: LkCardProps) {
@@ -46,13 +47,11 @@ export default function Card({
     [scaleFactor, variant, material, className, opticalCorrection]
   );
 
-  console.log(restProps);
-
   return (
     <div
-      {...lkCardAttrs}
       lk-component="card"
-      className={`${isClickable ? "clickable" : ""} ${"bg-" + bgColor} ${className || ""}`}
+      className={`${isClickable ? "clickable" : ""}  ${className || ""}`}
+      {...lkCardAttrs}
       {...restProps}
     >
       <div lk-card-element="padding-box" lk-card-optical-correction={opticalCorrection}>
@@ -61,9 +60,9 @@ export default function Card({
         </div>
         {/* todo: define types for material scrim thickness, */}
       </div>
-      {material === "glass" && (
-        <div lk-component="lk-material-scrim" lk-material-scrim-thickness={materialThickness ?? "default"} />
-      )}
+      {material === "glass" && <MaterialLayer material="glass" materialProps={{ thickness: "normal" }} />}
+      {material === "flat" && <MaterialLayer material="flat" materialProps={{ bgColor: bgColor }} />}
+      {/**TODO: Define outlined card behavior */}
     </div>
   );
 }
