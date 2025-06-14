@@ -1,11 +1,26 @@
 [lk-component="menu-item"] {
+  --py: calc(var(--lk-size-lg) * var(--lk-halfstep-dec));
+  --gap: calc(var(--py) / var(--lk-eighthstep));
+
   display: inline-flex;
   align-items: center;
   gap: var(--lk-size-sm);
   border-radius: calc(var(--lk-size-lg) * var(--lk-halfstep-dec));
-  padding-top: calc(var(--lk-size-lg) * var(--lk-halfstep-dec));
-  padding-bottom: calc(var(--lk-size-lg) * var(--lk-halfstep-dec));
+  padding-top: var(--py);
+  padding-bottom: var(--py);
+  gap: var(--gap);
   position: relative;
+
+  /* Required for text-overflow ellipsis */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+[lk-menu-item-element="content-wrap"] {
+  flex: 1 0 0;
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
 }
 
 /* Left padding with start icon */
@@ -27,6 +42,6 @@
   padding-right: var(--body-font-size);
 }
 
-[lk-component="menu-item"]>[lk-component="state-layer"] {
+[lk-component="menu-item"] > [lk-component="state-layer"] {
   border-radius: var(--lk-size-xs);
 }

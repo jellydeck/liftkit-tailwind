@@ -1,18 +1,19 @@
 import "@/registry/nextjs/components/state-layer/state-layer.css";
 
 interface StateLayerProps {
-  bgColor?: LkColor;
+  bgColor?: LkColor | "currentColor";
 }
 
-export default function StateLayer(props: StateLayerProps) {
-  const { bgColor } = props;
-
-  console.log(bgColor);
+export default function StateLayer({ bgColor="currentColor"}: StateLayerProps) {
+  console.log('statelayer bgColor:', bgColor);
 
   return (
     <>
-      <div lk-component="state-layer" className={`bg-${bgColor}`}></div>
-
+      <div
+        lk-component="state-layer"
+        className={bgColor !== "currentColor" ? `bg-${bgColor}` : ""}
+        style={bgColor === "currentColor" ? { backgroundColor: "currentColor" } : {}}
+      ></div>
     </>
   );
 }
