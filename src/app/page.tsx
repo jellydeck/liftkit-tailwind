@@ -13,7 +13,7 @@ import Grid from "@/registry/nextjs/components/grid";
 import TabContent from "@/registry/nextjs/components/tab-content";
 import Tabs from "@/registry/nextjs/components/tabs";
 import Card from "@/registry/nextjs/components/card";
-import DropdownMenu from "@/registry/nextjs/components/dropdown-menu";
+
 import Snackbar from "@/registry/nextjs/components/snackbar";
 import NavBar from "@/registry/nextjs/components/navbar";
 import IconButton from "@/registry/nextjs/components/icon-button";
@@ -80,32 +80,6 @@ export default function Home() {
           { label: "Two", value: "Two" },
         ]}
       />
-      {/* Refactored Dropdown Menu Component */}
-      <div className="flex-h justify-content-space-between w-full">
-        {["A", "B", "C"].map((key, index) => {
-          const align = index === 0 ? "left" : index === 2 ? "right" : "center";
-          return (
-            <div className="dropdown" key={key}>
-              <IconButton icon="airplay" aria-expanded="false" aria-controls={`${key}-dropdown`} tabIndex={0} />
-              <DropdownMenu
-                id={`${key}-dropdown`}
-                align={align}
-                cardProps={{ material: "glass", materialProps: { thickness: "thin", tint: "primary" } }}
-              >
-                <MenuItem fontClass="body" startIcon={{ name: "airplay" }}>
-                  Airplay
-                </MenuItem>
-                <MenuItem fontClass="body" startIcon={{ name: "airplay" }}>
-                  Airplay
-                </MenuItem>
-                <MenuItem fontClass="body" startIcon={{ name: "airplay" }}>
-                  Airplay
-                </MenuItem>
-              </DropdownMenu>
-            </div>
-          );
-        })}
-      </div>
 
       <NavBar
         navButtons={[
