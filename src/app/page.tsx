@@ -14,13 +14,13 @@ import TabContent from "@/registry/nextjs/components/tab-content";
 import Tabs from "@/registry/nextjs/components/tabs";
 import Card from "@/registry/nextjs/components/card";
 
-import Snackbar from "@/registry/nextjs/components/snackbar";
+
 import NavBar from "@/registry/nextjs/components/navbar";
 import IconButton from "@/registry/nextjs/components/icon-button";
 
 import { useState } from "react";
-import Link from "next/link";
-import MenuItem from "@/registry/nextjs/components/menu-item";
+
+
 
 const contentStyle: React.CSSProperties = {
   background: "#e0e0e0",
@@ -42,12 +42,9 @@ export default function Home() {
   const tabLabels = ["Home", "Profile", "Settings"];
   const variants = ["fill", "outline", "text"] as const;
   const buttonSizes = ["sm", "md", "lg"] as const;
-  const [openDropdowns, setOpenDropdowns] = useState<{
-    [key: string]: boolean;
-  }>({});
-  const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
-  const [selectedValue, setSelectedValue] = useState("");
-  console.log("selected value", selectedValue);
+
+
+
   // const handleChange = (value: string) => {
   //   setSelectedValue(value);
   //   console.log(value);
@@ -59,13 +56,6 @@ export default function Home() {
   //   { label: "Option 3", value: "option3" },
   // ];
 
-  const toggleDropdown = (id: string) => {
-    setOpenDropdowns((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const toggleMenu = (id: string) => {
-    setOpenMenus((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
 
   
   return (
@@ -87,7 +77,7 @@ export default function Home() {
           <Button key="primary" label="Primary" variant="fill" color="surfacecontainer" />,
         ]}
       />
-      <Snackbar badgeColor="error" globalColor="surface" />
+      {/* <Snackbar badgeColor="error" globalColor="surface" /> */}
       <div
         style={{
           display: "grid",
@@ -97,27 +87,27 @@ export default function Home() {
         }}
       >
         {/* Default usage */}
-        <Snackbar />
+        {/* <Snackbar /> */}
 
         {/* Custom message */}
-        <Snackbar message="Your changes have been saved." fontClass="label" backgroundColor="error" />
+        {/* <Snackbar message="Your changes have been saved." fontClass="label" backgroundColor="error" /> */}
 
         {/* Custom badge color */}
-        <Snackbar badgeColor="error" message="There was a problem saving your changes." />
+        {/* <Snackbar badgeColor="error" message="There was a problem saving your changes." /> */}
 
         {/* Custom primary and secondary button colors */}
-        <Snackbar primaryButtonColor="success" secondaryButtonColor="error" message="Settings updated successfully." />
+        {/* <Snackbar primaryButtonColor="success" secondaryButtonColor="error" message="Settings updated successfully." /> */}
 
         {/* Global color overrides badge + both buttons */}
-        <Snackbar globalColor="warning" message="This will overwrite existing data." />
+        {/* <Snackbar globalColor="warning" message="This will overwrite existing data." /> */}
 
         {/* Adding custom class or inline styles */}
-        <Snackbar
+        {/* <Snackbar
           message="Styled with className and onClick!"
           className="custom-snackbar"
           onClick={() => alert("Snackbar clicked")}
           style={{ cursor: "pointer" }}
-        />
+        /> */}
       </div>
       <Tabs tabLinks={tabLabels} activeTab={activeTab} setActiveTab={setActiveTab}>
         {tabLabels.map((label, index) => (

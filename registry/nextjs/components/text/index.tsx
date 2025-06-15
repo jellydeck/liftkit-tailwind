@@ -4,22 +4,22 @@ import "@/registry/nextjs/components/text/text.css";
 
 type LkSemanticTag = keyof JSX.IntrinsicElements;
 
-interface LkTextProps extends React.HTMLAttributes<HTMLElement> {
+export interface LkTextProps extends React.HTMLAttributes<HTMLElement> {
   fontClass?: LkFontClass;
   content?: string;
   color?: LkColor;
   tag?: LkSemanticTag;
+  className?: string; // explicitly extracting because internal logic controls its rendering order
 }
 
-export default function Text(props: LkTextProps) {
-  const { tag = "div", fontClass = "display2-bold", color, children, style, ...restProps } = props;
+export default function Text({ tag = "div", fontClass, color, children, style, className, ...restProps }: LkTextProps) {
   const Tag = tag as ElementType;
 
   /**Temporarily removing the attr spreader because it's not being used */
   // const textAttrs = useMemo(() => propsToDataAttrs(restProps, "text"), [restProps]);
 
   return (
-    <Tag className={`${fontClass} color-${color}`} style={style} {...restProps}>
+    <Tag className={`${fontClass} color-${color} ${className || ''}`} style={style} {...restProps}>
       {children}
     </Tag>
   );
