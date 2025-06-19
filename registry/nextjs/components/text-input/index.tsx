@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from "react";
 import { propsToDataAttrs } from "@/registry/nextjs/lib/utilities";
 import "@/registry/nextjs/components/text-input/text-input.css";
@@ -52,6 +54,7 @@ export default function TextInput({
         <input
           type="text"
           name={name}
+          id={name}
           placeholder={labelPosition !== "on-input" ? placeholder : ""}
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
