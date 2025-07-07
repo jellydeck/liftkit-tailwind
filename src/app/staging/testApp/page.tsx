@@ -11,12 +11,73 @@ import { Dropdown, DropdownTrigger, DropdownMenu } from "@/registry/nextjs/compo
 import Button from "@/registry/nextjs/components/button";
 import MenuItem from "@/registry/nextjs/components/menu-item";
 import Text from "@/registry/nextjs/components/text";
-import StateLayer from "@/registry/nextjs/components/state-layer";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "@/registry/nextjs/components/theme";
+import Switch from "@/registry/nextjs/components/switch";
+import Grid from "@/registry/nextjs/components/grid";
+import ThemeController from "@/registry/nextjs/components/theme-controller";
+
+type LkColorGroup =
+  | "master"
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "neutral"
+  | "neutralvariant"
+  | "error"
+  | "warning"
+  | "success"
+  | "info";
 
 export default function TestApp() {
-  const { updateTheme } = useContext(ThemeContext);
+  const { palette, setPalette, theme, updateTheme, updateThemeFromMaster, colorMode, setColorMode } =
+    useContext(ThemeContext);
+
+  const colorGroups: LkColorGroup[] = [
+    "master",
+    "primary",
+    "secondary",
+    "tertiary",
+    "neutral",
+    "neutralvariant",
+    "error",
+    "warning",
+    "success",
+    "info",
+  ];
+
+  const brandPalette: LkColorGroup[] = ["primary", "secondary", "tertiary"];
+
+  const semanticPalette: LkColorGroup[] = ["error", "warning", "success", "info"];
+
+  const layoutPalette: LkColorGroup[] = ["neutral", "neutralvariant"];
+
+  const [paletteArray, setPaletteArray] = useState(
+    Object.keys(palette).map((key) => {
+      return { key, value: palette[key] };
+    })
+  );
+
+  useEffect(() => {
+    updateTheme(palette);
+    const newPaletteArray = Object.keys(palette).map((key) => {
+      return { key, value: palette[key] };
+    });
+    setPaletteArray(newPaletteArray);
+  }, [palette]);
+
+  const handleColorChange = (key: LkColorGroup, newValue: string) => {
+    console.log(key);
+
+    if (key === "master") {
+      updateThemeFromMaster(newValue, setPalette);
+    } else {
+      setPalette((prevPalette) => ({
+        ...prevPalette,
+        [key]: newValue,
+      }));
+    }
+  };
 
   const theme1 = {
     primary: "#035eff",
@@ -67,26 +128,34 @@ export default function TestApp() {
   };
 
   function getRows(count: number) {
-    const firstNames = ["Alice", "Bob", "Charlie", "Diana", "Edward", "Fiona", "George", "Helen", "Ian", "Julia"];
-    const lastNames = [
-      "Smith",
-      "Johnson",
-      "Williams",
-      "Brown",
-      "Jones",
-      "Garcia",
-      "Miller",
-      "Davis",
-      "Rodriguez",
-      "Martinez",
+    const fullNames = [
+      "Emma Thompson",
+      "Liam Rodriguez",
+      "Olivia Chen",
+      "Noah Williams",
+      "Ava Martinez",
+      "Ethan Johnson",
+      "Sophia Davis",
+      "Mason Garcia",
+      "Isabella Miller",
+      "Logan Wilson",
+      "Mia Anderson",
+      "Lucas Taylor",
+      "Charlotte Moore",
+      "Benjamin Jackson",
+      "Amelia White",
+      "Oliver Harris",
+      "Harper Martin",
+      "Elijah Clark",
+      "Evelyn Lewis",
+      "James Robinson",
     ];
     const roles = ["Admin", "Contributor", "Viewer"];
 
     const rows = [];
     for (let i = 0; i < count; i++) {
-      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-      const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-      const role = roles[Math.floor(Math.random() * roles.length)];
+      const fullName = fullNames[i % fullNames.length];
+      const role = roles[i % roles.length];
 
       rows.push(
         <tr key={i} className="position-relative overflow-hidden">
@@ -94,32 +163,198 @@ export default function TestApp() {
             <Icon name="square"></Icon>
           </td>
           <td className="py-sm">
-            <Text>
-              {firstName} {lastName}
-            </Text>
+            <Text>{fullName}</Text>
           </td>
           <td className="py-sm">
             <Text color="outline">{role}</Text>
           </td>
           <td className="py-sm">
-            <Button startIcon="image" color="secondary" variant="text" label="filename.jpg" size="sm" />
+            <Row alignItems="center" gap="xs" className="color-tertiary">
+              <Icon color="tertiary" fontClass="body" name="image" />
+              <p className="callout-bold">Filename.jpg</p>
+            </Row>
           </td>
           <td className="py-sm">
             <Row alignItems="center" gap="2xs" justifyContent="end">
-              <IconButton icon="edit" variant="text" size="sm"></IconButton>
-              <IconButton icon="trash" variant="text" size="sm"></IconButton>
-              <IconButton icon="check" variant="text" size="sm"></IconButton>
+              <IconButton icon="edit" variant="text" size="sm" color="secondary"></IconButton>
+              <IconButton icon="download" variant="text" size="sm"></IconButton>
+              <IconButton icon="trash" color="error" variant="text" size="sm"></IconButton>
             </Row>
           </td>
-          <StateLayer bgColor="primary" />
         </tr>
       );
     }
     return rows;
   }
 
+  function handleColorModeSwitch() {
+    if (colorMode === "dark") {
+      setColorMode("light");
+    } else {
+      setColorMode("dark");
+    }
+  }
+
+  const handleCopyPalette = async () => {
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(palette, null, 2));
+      alert("Code copied");
+    } catch (err) {
+      console.error("Failed to copy palette:", err);
+    }
+  };
+
   return (
     <>
+      {/* Render a set of color inputs, one for each color group. */}
+
+      {/* <Card scaleFactor="heading" bgColor="surfacecontainerlowest" className="shadow-lg m-bottom-2xl">
+          <Column gap="lg">
+            <Grid columns={5} gap="md">
+              <div>
+                <h2 className="heading m-bottom-2xs">Globals</h2>
+                <p className="subheading color-onsurfacevariant">
+                  The "root" color of your theme. The color utilities will calculate all other color group swatches from
+                  this one.
+                </p>
+              </div>
+              <Row alignItems="start" gap="md">
+                <input
+                  type="color"
+                  name="master"
+                  value={palette["master"]}
+                  onChange={(event) => handleColorChange("master", event.target.value)}
+                ></input>
+                <Column>
+                  <label className="label m-bottom-xs" htmlFor={"master"}>
+                    {"master"}
+                  </label>
+                  <p className="caption color-onsurfacevariant m-bottom-xs">
+                    The seed color.{" "}
+                    <strong className="color-error">If you edit this, all other color tokens will reset.</strong>
+                  </p>
+                </Column>
+              </Row>
+              <Row alignItems="start" gap="md">
+                <Column>
+                  <Switch onClick={handleColorModeSwitch} value={colorMode === "dark" ? true : false}></Switch>
+                </Column>
+                <Column>
+                  <label className="label m-bottom-xs">Default to Dark Mode</label>
+                  <p className="caption color-onsurfacevariant m-bottom-xs">Toggles dark mode.</p>
+                </Column>
+              </Row>
+            </Grid>
+            <Grid columns={5}>
+              <div>
+                <h2 className="heading m-bottom-2xs">Brand palette </h2>
+                <p className="subheading color-onsurfacevariant m-bottom-md">The key colors of your brand.</p>
+              </div>
+              {brandPalette.map((colorGroup) => (
+                <Row key={colorGroup} alignItems="start" gap="md">
+                  <input
+                    type="color"
+                    name={colorGroup}
+                    value={palette[colorGroup]}
+                    onChange={(event) => handleColorChange(colorGroup, event.target.value)}
+                  ></input>
+                  <Column>
+                    <label className="label m-bottom-xs" htmlFor={colorGroup}>
+                      {colorGroup}
+                    </label>
+                    <p className="caption color-onsurfacevariant m-bottom-xs">
+                      {colorGroup === "primary"
+                        ? "Main brand color, used for most UI elements."
+                        : colorGroup === "secondary"
+                          ? "Desaturated variant of primary."
+                          : colorGroup === "tertiary"
+                            ? "Your accent color. Defaults to complementary hue to primary."
+                            : null}
+                    </p>
+                  </Column>
+                </Row>
+              ))}
+            </Grid>
+            <Grid columns={5}>
+              <div>
+                <h2 className="heading m-bottom-2xs">Semantic Palette</h2>
+                <p className="subheading color-onsurfacevariant m-bottom-md">Colors for communicating with the user.</p>
+              </div>
+              {semanticPalette.map((colorGroup) => (
+                <Row key={colorGroup} alignItems="start" gap="md">
+                  <input
+                    type="color"
+                    name={colorGroup}
+                    value={palette[colorGroup]}
+                    onChange={(event) => handleColorChange(colorGroup, event.target.value)}
+                  ></input>
+                  <Column>
+                    <label className="label m-bottom-xs" htmlFor={colorGroup}>
+                      {colorGroup}
+                    </label>
+                    <p className="caption color-onsurfacevariant m-bottom-xs">
+                      {colorGroup === "error"
+                        ? "A pink or red, indicating problems."
+                        : colorGroup === "warning"
+                          ? "An orange or yellow, indicating caution."
+                          : colorGroup === "success"
+                            ? "A green, indicating success."
+                            : colorGroup === "info"
+                              ? "A blue, indicating neutral information."
+                              : null}
+                    </p>
+                  </Column>
+                </Row>
+              ))}
+            </Grid>
+            <Grid columns={5}>
+              <div>
+                <h2 className="heading m-bottom-2xs">Layout Palette</h2>
+                <p className="subheading color-onsurfacevariant m-bottom-md">
+                  Backgrounds, surfaces, default text colors, and outlines.
+                </p>
+              </div>
+              {layoutPalette.map((colorGroup) => (
+                <Row key={colorGroup} alignItems="start" gap="md">
+                  <input
+                    type="color"
+                    name={colorGroup}
+                    value={palette[colorGroup]}
+                    onChange={(event) => handleColorChange(colorGroup, event.target.value)}
+                  ></input>
+                  <Column>
+                    <label className="label m-bottom-xs" htmlFor={colorGroup}>
+                      {colorGroup}
+                    </label>
+                    <p className="caption color-onsurfacevariant m-bottom-xs">
+                      {colorGroup === "neutral"
+                        ? "Backgrounds, surfaces, outlines, and default text color"
+                        : colorGroup === "neutralvariant"
+                          ? "Surface variant, outline variant, and text color variant"
+                          : null}
+                    </p>
+                  </Column>
+                </Row>
+              ))}
+            </Grid>
+          </Column>
+          <Card bgColor="surfacevariant" scaleFactor="body" className="position-relative">
+            <pre>
+    {`
+const [colorMode, setColorMode] = useState<"light" | "dark">("${colorMode}");
+
+const [palette, setPalette] = useState<PaletteState>(${JSON.stringify(palette, null, 2)}
+`}
+            </pre>
+            <IconButton
+              icon="copy"
+              style={{ position: "absolute", inset: "1em 1em auto auto" }}
+              onClick={handleCopyPalette}
+            ></IconButton>
+          </Card>
+        </Card> */}
+      <ThemeController />
+
       <Row style={{ height: "100vh" }} gap="2xl" className="bg-surfacecontainer p-2xl overflow-hidden">
         <Column gap="lg">
           <IconButton icon="grid" fontClass="title3"></IconButton>
@@ -172,7 +407,20 @@ export default function TestApp() {
                 </Row>
               </Row>
               <Column>
-                <table>{getRows(25)}</table>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>
+                        <Icon name="square"></Icon>
+                      </th>
+                      <th>Name</th>
+                      <th>Role</th>
+                      <th>Profile Photo</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>{getRows(25)}</tbody>
+                </table>
               </Column>
             </Card>
             <Card scaleFactor="body"></Card>
@@ -182,6 +430,61 @@ export default function TestApp() {
           </Tabs>
         </Column>
       </Row>
+      <style jsx>{`
+        table {
+          border-collapse: collapse;
+        }
+        th {
+          text-align: left;
+          font-size: var(--subheading-font-size);
+          padding: var(--lk-size-sm) 0px;
+          border-bottom: 1px solid black;
+          font-weight: 500;
+        }
+
+        th:first-child {
+          font-size: var(--body-font-size);
+        }
+
+        th:last-child {
+          text-align: right;
+        }
+
+        thead tr {
+          border-bottom: 1px solid black;
+        }
+
+        input[type="color"] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          width: var(--lk-size-xl);
+          height: var(--lk-size-xl);
+          flex-basis: auto;
+          flex: 0 0 auto;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          outline: 2px solid var(--lk-onsurface);
+          border-radius: 100em;
+
+          padding-block: 0px;
+          padding-inline: 0px;
+
+          &::-webkit-color-swatch-wrapper {
+            padding: 0;
+          }
+
+          &::-webkit-color-swatch {
+            border-radius: 100em;
+            border: none;
+          }
+          &::-moz-color-swatch {
+            border-radius: 100%;
+            border: none;
+          }
+        }
+      `}</style>
     </>
   );
 }
