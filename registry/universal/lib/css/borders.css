@@ -2,37 +2,30 @@
   border: 1px solid var(--lk-outline);
 }
 
-.border-dashed {
-  border: 2px solid var(--lk-outline);
-  border-style: dashed;
-}
-
-.border-top {
+.border-t {
   border-top: 1px solid var(--lk-outline);
 }
 
-.border-right {
+.border-r {
   border-right: 1px solid var(--lk-outline);
 }
 
-.border-left {
+.border-l {
   border-left: 1px solid var(--lk-outline);
 }
 
-.border-bottom {
+.border-b {
   border-bottom: 1px solid var(--lk-outline);
 }
 
-.border-color-error {
-  border-color: var(--lk-error);
+.border-x {
+  border-left: 1px solid var(--lk-outline);
+  border-right: 1px solid var(--lk-outline);
 }
 
-.border-color-onerrorcontainer {
-  border-color: var(--lk-onerrorcontainer);
-}
-
-.border-color-outlinevariant {
-  border-color: var(--lk-outlinevariant);
+.border-y {
+  border-top: 1px solid var(--lk-outline);
+  border-bottom: 1px solid var(--lk-outline);
 }
 
 .border-none {
