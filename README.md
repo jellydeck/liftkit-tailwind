@@ -1,176 +1,258 @@
 <!-- markdownlint-disable -->
-<br />
-<div align="center">
-  <a href="https://github.com/chainlift/liftkit">
-    <img src="https://cdn.prod.website-files.com/657f62adb6ceeafe578853be/68748d8bdb8b734290a3db92_h-lockup-transparent.svg" height="100em" alt="chainlift-liftkit">
-  </a>
-  <p>🎢</p>
-  <p>
-    <strong>
-      The UI Framework for Perfectionists
-    </strong>
-  </p>
+<p align="center"><em>The UI Framework for Perfectionists </em></p>
 
-[![css][css-shield]][css-url]
-[![NextJS][nextjs-shield]][nextjs-url]
+![LiftKit Preview](https://cdn.prod.website-files.com/657f62adb6ceeafe578853be/68748d8bdb8b734290a3db92_h-lockup-transparent.svg)
 
-[![GPL2 License][license-shield]][license-url]
-[![Issues][issues-shield]][issues-url]
+<h1 align="center">🎢 </h1> 
+<p align="center"><a href="#installation">Install</a> • <a href="https://www.chainlift.io/liftkit/get-started">Documentation</a> • <a href="https://discord.gg/chainlift">Discord</a></p>
+<p align="center"><a href="https://www.figma.com/community/file/1404856652359938563">Figma Template</a> • <a href="https://webflow.com/made-in-webflow/website/liftkit">Webflow Template</a> • <a href="https://github.com/sponsors/chainlift">Sponsor</a></p>
+
+
+
+
+## Features
+
+```jsx
+// Tailwind utilities
+<div className="mt-4 w-40 bg-amber-900">Standard Tailwind</div>
+
+// LiftKit's golden ratio utilities
+<div className="mt-md bg-primary text-onprimary">Golden Ratio Design</div>
+```
+
+* Full Tailwind v4 support
+
+* Golden ratio spacing utilities (`mt-md`, `p-lg`, etc.)
+* Dynamic color utilities (`bg-primary`, `text-onprimary`, etc.)
+* Custom LiftKit utility classes alongside standard Tailwind
+* Dynamic color system powered by Material 3
+* Seamless integration with existing projects
+
+
+
+<br>
+
+## What is LiftKit?
+LiftKit is a UI framework based on the golden ratio. 
+at the core, set of formulas provide golden values with material 3 color system. 
+
+
+With current support, LiftKit now fully supports **Tailwind v4** alongside its custom utility classes, giving you the best of both worlds:
+
+
+<br>
+
+## Tailwind v4 Integration
+
+### Prerequisites
+ Next.js project with LiftKit installed.
+
+### Step 1: Install Tailwind v4
+Follow the official guide: [Tailwind v4 Next.js Installation](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+
+### Step 2: Update Your globals.css
+1. Go to [globals.css](https://github.com/jellydeck/liftkit-tailwind/blob/main/src/app/globals.css) and copy the entire file
+2. Replace your existing `globals.css` with the copied content
+3. Update below path with liftkit's `index.css`:
+
+```css
+@layer lk-base {
+   @import "@/lib/css/index.css"; /* IMPORTANT : replace this path with your liftkit css one */
+}
+```
+
+That's it! Now you can use tailwind v4 + liftkit utility classes.
+
+
+## How It Works
+
+The CSS layer structure ensures proper precedence:
+- **theme**: Tailwind's CSS custom properties and design tokens
+- **lk-base**: LiftKit's core styles and Tailwind's preflight/reset  
+- **components**: Component-specific styles
+- **utilities**: Utility classes (highest precedence)
+
+This setup allows you to use both standard Tailwind utilities and LiftKit's golden ratio utilities together:
+
+```jsx
+// Standard Tailwind utilities
+<div className="mt-4 w-40 bg-amber-900">
+  Standard Tailwind
 </div>
-<!-- markdownlint-restore -->
 
-# :grey_question: What is LiftKit?
-LiftKit is a UI framework based on the golden ratio. At its core, it's a set of formulas and variables that unlock advanced visual design features like optical spacing corrections and dynamic color, powered by Material 3. 
+// LiftKit golden ratio utilities  
+<div className="mt-md bg-primary text-onprimary">
+  Golden ratio spacing with dynamic colors
+</div>
+```
 
-## Getting Started
-- The following instructions are easier to read on our website: See [Documentation](https://www.chainlift.io/liftkit/get-started)
+The utilities layer has the highest precedence, allowing Tailwind utilities to override LiftKit base styles when needed, while still preserving LiftKit's golden ratio system and Material 3 colors.
 
-# Install
+<br>
 
-This documentation assumes the following:
+## Utility Classes
 
-* You already have **Node.js**, **npm**, and **Git** installed on your local machine
-* You’re familiar with basic terminal commands like `cd`
+Use both standard Tailwind utilities and custom golden ratio utilities:
 
-## 1. Create the Config Files
+### Tailwind v4
+```jsx
+<div className="mt-4 w-40 bg-amber-900 rounded-lg">
+  Standard Tailwind styling
+</div>
+```
 
-### Option A: Clone Template Project
+### LiftKit Golden Ratio Classes
+```jsx
+<div className="mt-md p-lg bg-primary text-onprimary">
+  Golden ratio spacing with dynamic colors
+</div>
+```
 
-1. Paste the following command into your terminal to clone the template:
+### Available LiftKit Utilities
 
-   ```bash
-   git clone https://github.com/Chainlift/liftkit-template.git
-   ```
-2. `cd` into the newly-created project.
+**Spacing (Golden Ratio Based):**
+- `m-xs`, `m-sm`, `m-md`, `m-lg`, `m-xl`
+- `p-xs`, `p-sm`, `p-md`, `p-lg`, `p-xl`
+- `mt-md`, `mb-lg`, `ml-sm`, etc.
 
-   * If you get an error that says `direnv: error`, just ignore it. It's a bug we'll fix soon.
-3. Run:
+**Dynamic Colors (Material 3):**
+- `bg-primary`, `bg-secondary`, `bg-tertiary`
+- `text-onprimary`, `text-onsecondary`
+- `border-outline`, `bg-surface`
 
-   ```bash
-   npm install
-   ```
-4. Install the components you need (see section 2 below).
-5. Import LiftKit’s CSS into your app’s `globals.css`:
+The CSS layer structure ensures proper precedence:
+```css
+/* Left to right, right has most power */
+@layer theme, lk-base, components, utilities;
+```
 
-   ```css
-   @import url('@/lib/css/index.css');
-   ```
+<br>
 
-#### What’s in the template?
+## Configuration
+Configuration is done through the `components.json` file and optional `tailwind.config.ts`. The system is designed to work seamlessly whether you use Tailwind or not.
 
-A blank Next.js project with LiftKit Core’s config files pre-installed—fastest way to get up and running.
+<details>
+<summary><strong>Preview example configuration</strong></summary>
+<br>
 
----
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+```
 
-### Option B: Add to Existing Next.js Project
+</details>
 
-1. `cd` into your project’s root directory.
-2. Install LiftKit CLI as a dev dependency:
+<br>
 
-   ```bash
-   npm install @chainlift/liftkit --save-dev
-   ```
-3. Initialize LiftKit:
+## Common Issues
+<details>
+<summary><strong>React 19 compatibility warnings</strong></summary>
 
-   ```bash
-   npx liftkit init
-   ```
+If you see warnings about React 19 compatibility when installing components, add `--force` to your install command:
 
-   * If prompted to add an `add` script to `package.json`, say **yes**.
-   * If prompted to install **shadcn** as a devDependency, say **yes**.
-4. Install the components you need (see section 2 below).
-5. Import LiftKit’s CSS into your app’s `globals.css`:
+```bash
+npm run add button --force
+```
 
-   ```css
-   @import url('@/lib/css/index.css');
-   ```
+This is a known issue with the current registry system and doesn't affect functionality.
+</details>
 
-#### What does `npx liftkit init` do?
+<details>
+<summary><strong>Why did it install CSS for components I'm not using?</strong></summary>
 
-It adds two files to your project root:
+This is by design to let you experiment freely with different components. Unused styles are automatically removed at build time through tree-shaking.
+</details>
 
-* `components.json`
-* `tailwind.config.ts`
+<details>
+<summary><strong>Tailwind classes not working with LiftKit</strong></summary>
 
-> *You do not need Tailwind itself to use LiftKit—just the config file for now.*
+Ensure your CSS layer structure is correct in `globals.css`. The `utilities` layer should come last to have proper precedence over LiftKit base styles.
+</details>
 
----
-
-## 2. Install LiftKit Components & Styles
-
-LiftKit Core is just the base config. LiftKit Components are the actual UI components (with their CSS). At build time, unused CSS is tree-shaken away.
-
-| Method            | Instructions                                      | Command                                 |
-| ----------------- | ------------------------------------------------- | --------------------------------------- |
-| **Everything**    | All components, CSS, and types                    | `npm run add all`                       |
-| **One Component** | Specified component only (with its CSS and types) | `npm run add component-name-kebab-case` |
-| **Base**          | CSS and types only                                | `npm run add base`                      |
-
-> If warned about React 19 compatibility, add `--force` and proceed.
-
----
+<br>
 
 ## FAQ
+<details>
+<summary><strong>Do I need Tailwind CSS to use LiftKit?</strong></summary>
+No—LiftKit works independently. However, Tailwind v4 integration provides additional utility classes for enhanced flexibility.
+</details>
 
-* **I only installed one component, but it installed multiple. Why?**
-  Some components import others. E.g., installing `Badge` also brings in `Icon`.
-* **Why did it install CSS for components I’m not using?**
-  By design—to let you play freely. Unused styles are removed at build time.
-* **How can I get rid of unused CSS?**
-  It’s automatically removed at build time.
-* **Does LiftKit require Tailwind?**
-  No—only a `tailwind.config.ts` file is needed (a requirement of the current registry). Tailwind itself is *not* a dependency.
+<details>
+<summary><strong>Can I use LiftKit with other CSS frameworks?</strong></summary>
+Yes, LiftKit is designed to be framework-agnostic, though it works best with modern CSS-in-JS solutions and PostCSS.
+</details>
 
----
+<details>
+<summary><strong>How does the golden ratio improve my UI?</strong></summary>
+The golden ratio (1.618) creates naturally pleasing proportions. LiftKit applies this mathematically to spacing, sizing, and color relationships for more harmonious interfaces.
+</details>
 
-## The Figma Template
+<details>
+<summary><strong>What's the difference between LiftKit utilities and Tailwind utilities?</strong></summary>
+LiftKit utilities are based on the golden ratio and Material 3 design principles, while Tailwind utilities use standard linear scales. You can use both together.
+</details>
 
-> **Warning:** It’s currently a dumpster fire. We’re working on improvements—contributors welcome!
+<br>
 
-### Clone the Community File
+## Contributing
 
-* [View File on Figma](https://www.figma.com/community/file/1404856652359938563) (opens in new tab)
+Currently repo is maintained by me. 
 
----
+We welcome contributions to LiftKit! Here are some guidelines:
 
-## Known Issues
+* Submit feature requests before implementing major changes
+* Use the `dev` branch for new features and bug fixes
+* Maintain compatibility with existing utility classes
+* Follow the golden ratio principles in new components
+* Provide screenshots for UI-related changes
+* Keep bundle size minimal - avoid unnecessary dependencies
 
-### Button variants are out of control
+<br>
 
-* We know. We’ll fix it soon.
+## Building from Source
 
-  * Buttons adjust padding based on icon presence, and padding values aren’t controllable via props.
-  * Our only option was to list everything explicitly—clearly a bad idea in hindsight.
+<details>
+<summary><strong>Development Setup</strong></summary>
+<br>
 
-### Local variables need documentation
+Requirements: Node.js >= 16, npm
 
-* Figma doesn’t support margins or `em` units, so we converted everything to pixels (assuming `1rem = 16px`).
-* Variables are organized into collections:
+```bash
+# Clone the repository
+git clone https://github.com/jellydeck/liftkit-tailwind
+cd liftkit-tailwind
 
-  * **Global collection** = base `LkSizeUnit` variables
-  * **Text Spacing Vals** = subsets per `LkFontClass`, simulating spacing props like `.m-bottom-xs`
+# Install dependencies
+npm install
 
----
+# Build the project
+npm run build
 
-## Clone the Webflow Template
+# Run development server
+npm run dev
+```
 
-* [View on Made in Webflow](https://www.webflow.com) (opens in new tab)
+<hr>
+</details>
 
+<br>
 
+## Thank you
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[nextjs-shield]: https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=next.js&logoColor=white
-[nextjs-url]: https://github.com/vercel/next.js
-[nix-shield]: https://img.shields.io/badge/nix-0175C2?style=for-the-badge&logo=NixOS&logoColor=white
-[nix-url]: https://nixos.org/
-[css-shield]: https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white
-[css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
-[shadcn-shield]: https://img.shields.io/badge/shadcn-registry-%23EDE9FE.svg?style=for-the-badge&logo=vercel&logoColor=black
-[shadcn-url]: https://ui.shadcn.com/docs/registry
+[Garett Mack](https://github.com/garrett-from-chainlift)
 
-[license-shield]: https://img.shields.io/github/license/chainlift/liftkit.svg?style=for-the-badge
-[license-url]: https://github.com/chainlift/liftkit/blob/master/LICENSE
-[issues-shield]: https://img.shields.io/github/issues/chainlift/liftkit.svg?style=for-the-badge
-[issues-url]: https://github.com/chainlift/liftkit/issues
-[license-shield]: https://img.shields.io/github/license/chainlift/liftkit.svg?style=for-the-badge
-[license-url]: https://github.com/chainlift/liftkit/blob/master/LICENSE
+[Liftkit Team](https://github.com/Chainlift/liftkit)

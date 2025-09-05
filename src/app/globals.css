@@ -9,6 +9,8 @@
 
 @layer lk-base {
     @import "../../registry/universal/lib/css/index.css";
+     /* IMPORTANT : replace this path with your liftkit css one */
+
 
     ul,
     ol,
