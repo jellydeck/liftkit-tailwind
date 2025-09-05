@@ -1,12 +1,15 @@
 <!-- markdownlint-disable -->
+<div align="center">
 <p align="center"><em>The UI Framework for Perfectionists </em></p>
 
-![LiftKit Preview](https://cdn.prod.website-files.com/657f62adb6ceeafe578853be/68748d8bdb8b734290a3db92_h-lockup-transparent.svg)
+ <a href="https://github.com/chainlift/liftkit">
+    <img src="https://cdn.prod.website-files.com/657f62adb6ceeafe578853be/68748d8bdb8b734290a3db92_h-lockup-transparent.svg" height="60em" alt="chainlift-liftkit">
+  </a>
 
 <h1 align="center">🎢 </h1> 
 <p align="center"><a href="#installation">Install</a> • <a href="https://www.chainlift.io/liftkit/get-started">Documentation</a> • <a href="https://discord.gg/chainlift">Discord</a></p>
 <p align="center"><a href="https://www.figma.com/community/file/1404856652359938563">Figma Template</a> • <a href="https://webflow.com/made-in-webflow/website/liftkit">Webflow Template</a> • <a href="https://github.com/sponsors/chainlift">Sponsor</a></p>
-
+</div>
 
 
 
