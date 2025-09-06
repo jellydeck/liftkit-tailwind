@@ -7,11 +7,12 @@
   </a>
 
 <h1 align="center">🎢 </h1> 
-<p align="center"><a href="#installation">Install</a> • <a href="https://www.chainlift.io/liftkit/get-started">Documentation</a> • <a href="https://discord.gg/chainlift">Discord</a></p>
-<p align="center"><a href="https://www.figma.com/community/file/1404856652359938563">Figma Template</a> • <a href="https://webflow.com/made-in-webflow/website/liftkit">Webflow Template</a> • <a href="https://github.com/sponsors/chainlift">Sponsor</a></p>
+<p align="center"><a href="https://www.chainlift.io/liftkit/install">Install</a> • <a href="https://www.chainlift.io/liftkit/get-started">Documentation</a></p>
+<p align="center"><a href="https://www.figma.com/community/file/1404856652359938563">Figma</a> • <a href="https://webflow.com/made-in-webflow/website/liftkit">Webflow Template</a></p>
 </div>
 
-
+> This is a community project. It is not officially supported by Chainlift. 
+ However, this may change in the future. To get notified about official updates, sign up at [chainlift.io/liftkit](chainlift.io/liftkit). 
 
 ## Features
 
