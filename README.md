@@ -61,8 +61,11 @@ Follow the official guide: [Tailwind v4 Next.js Installation](https://tailwindcs
 
 ```css
 @layer lk-base {
-   @import "../lib/css/index.css"; /* IMPORTANT : replace this path with your liftkit css one */
+   @import "../lib/css/index.css";  /* IMPORTANT : replace this path with your liftkit css one */
 }
+
+
+
 ```
 
 That's it! Now you can use tailwind v4 + liftkit utility classes.
