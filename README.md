@@ -16,12 +16,10 @@
 
 ## Features
 
-```jsx
-// Tailwind utilities 
-<div className="mt-4 w-40 bg-amber-900">Standard Tailwind</div>
+```html
+<div class="mt-md bg-primary text-onprimary"> Liftkit </div>
 
-// LiftKit's golden ratio utilities
-<div className="mt-md bg-primary text-onprimary">Golden Ratio Design</div>
+<div class="mt-4 bg-amber-900 text-black"> Tailwind v4 </div>
 ```
 
 * Full Tailwind v4 support
@@ -38,11 +36,10 @@
 
 ## What is LiftKit?
 LiftKit is a UI framework based on the golden ratio. 
-at the core, set of formulas provide golden values with material 3 color system. 
+at the core, set of formulas provide golden values with material 3 color system.
 
-
-With current support, LiftKit now fully supports **Tailwind v4** alongside its custom utility classes, giving you the best of both worlds:
-
+It fully supports **Tailwind v4** plus LiftKit's custom utility classes and
+remains fully backward-compatible.
 
 <br>
 
@@ -63,9 +60,6 @@ Follow the official guide: [Tailwind v4 Next.js Installation](https://tailwindcs
 @layer lk-base {
    @import "../lib/css/index.css";  /* IMPORTANT : update this path with LiftKit's index css file */
 }
-
-
-
 ```
 
 That's it! Now you can use tailwind v4 + liftkit utility classes.
@@ -81,16 +75,10 @@ The CSS layer structure ensures proper precedence:
 
 This setup allows you to use both standard Tailwind utilities and LiftKit's golden ratio utilities together:
 
-```jsx
-// Standard Tailwind utilities
-<div className="mt-4 w-40 bg-amber-900">
-  Standard Tailwind
-</div>
+```html
+<div class="mt-md bg-primary text-onprimary"> Liftkit </div>
 
-// LiftKit golden ratio utilities  
-<div className="mt-md bg-primary text-onprimary">
-  Golden ratio spacing with dynamic colors
-</div>
+<div class="mt-4 bg-amber-900 text-black"> Tailwind v4 </div>
 ```
 
 The utilities layer has the highest precedence, allowing Tailwind utilities to override LiftKit base styles when needed, while still preserving LiftKit's golden ratio system and Material 3 colors.
@@ -102,15 +90,15 @@ The utilities layer has the highest precedence, allowing Tailwind utilities to o
 Use both standard Tailwind utilities and custom golden ratio utilities:
 
 ### Tailwind v4
-```jsx
-<div className="mt-4 w-40 bg-amber-900 rounded-lg">
+```html
+<div class="mt-4 w-40 bg-amber-900 rounded-lg">
   Standard Tailwind styling
 </div>
 ```
 
 ### LiftKit Golden Ratio Classes
-```jsx
-<div className="mt-md p-lg bg-primary text-onprimary">
+```html
+<div class="mt-md p-lg bg-primary text-onprimary">
   Golden ratio spacing with dynamic colors
 </div>
 ```
