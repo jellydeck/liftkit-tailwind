@@ -55,13 +55,13 @@ With current support, LiftKit now fully supports **Tailwind v4** alongside its c
 Follow the official guide: [Tailwind v4 Next.js Installation](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
 
 ### Step 2: Update Your globals.css
-1. Go to [globals.css](https://github.com/jellydeck/liftkit-tailwind/blob/main/src/app/globals.css) and copy the entire file
+1. Go to [globals.css](https://github.com/jellydeck/liftkit-tailwind/blob/main/examples/globals.css) and copy the entire file
 2. Replace your existing `globals.css` with the copied content
 3. Update below path with liftkit's `index.css`:
 
 ```css
 @layer lk-base {
-   @import "@/lib/css/index.css"; /* IMPORTANT : replace this path with your liftkit css one */
+   @import "../lib/css/index.css"; /* IMPORTANT : replace this path with your liftkit css one */
 }
 ```
 
