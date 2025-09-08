@@ -17,7 +17,7 @@
 ## Features
 
 ```jsx
-// Tailwind utilities
+// Tailwind utilities 
 <div className="mt-4 w-40 bg-amber-900">Standard Tailwind</div>
 
 // LiftKit's golden ratio utilities
@@ -61,7 +61,7 @@ Follow the official guide: [Tailwind v4 Next.js Installation](https://tailwindcs
 
 ```css
 @layer lk-base {
-   @import "../lib/css/index.css";  /* IMPORTANT : replace this path with your liftkit css one */
+   @import "../lib/css/index.css";  /* IMPORTANT : update this path with LiftKit's index css file */
 }
 
 
