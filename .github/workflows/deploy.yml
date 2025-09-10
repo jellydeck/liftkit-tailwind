@@ -25,7 +25,6 @@ jobs:
         run: |
           npm run registry
           npm run build
-          npx next export
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
