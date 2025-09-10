@@ -1,4 +1,4 @@
-@layer theme, lk-base, components, utilities;
+@layer theme, lk-base, lk, utilities;
 /* from left to right, right one has most power */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@layer */
 

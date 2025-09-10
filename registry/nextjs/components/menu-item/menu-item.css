@@ -1,4 +1,4 @@
-@layer components {
+@layer lk {
 
   [data-lk-component="menu-item"] {
     --py: calc(var(--lk-size-lg) * var(--lk-halfstep-dec));

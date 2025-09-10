@@ -118,7 +118,7 @@ Use both standard Tailwind utilities and custom golden ratio utilities:
 The CSS layer structure ensures proper precedence:
 ```css
 /* Left to right, right has most power */
-@layer theme, lk-base, components, utilities;
+@layer theme, lk-base, lk, utilities;
 ```
 
 <br>

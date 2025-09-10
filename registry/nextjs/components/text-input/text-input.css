@@ -1,4 +1,4 @@
-@layer components {
+@layer lk {
 
   [data-lk-component="text-input"] {
     display: flex;
