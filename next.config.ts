@@ -10,7 +10,6 @@ const nextConfig = {
   // Enable static exports
   output: "export" as const,
   // Optionally, add any other Next.js config below
-  basePath: "/liftkit-tailwind"
 };
 
 const withMDX = createMDX({
