@@ -156,7 +156,7 @@ export default function TailwindTest() {
 
           <h2 className="heading mb-sm">Gap tests (taiwind first)</h2>
           <Row className="gap-lg flex-wrap">
-            {lkSizes.map((size, index) => {
+            {lkSizes.map((size) => {
               const gapClass = `gap-${size}`;
 
               return (

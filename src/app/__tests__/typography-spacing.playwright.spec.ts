@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { DecrementKey } from '../staging/tailwind-test/qaTable';
+
 
 // LiftKit formulas for expected values
 const round = (num: number, precision = 0.001) => {
@@ -14,7 +16,7 @@ const LiftKit = {
     quarterstep: round(Math.pow(1.618, 0.25), 0.001),
     eighthstep: round(Math.pow(1.618, 0.125), 0.001),
   },
-  decrements: {} as any,
+  decrements: {} as Record<DecrementKey, number>,
 };
 
 LiftKit.decrements = {

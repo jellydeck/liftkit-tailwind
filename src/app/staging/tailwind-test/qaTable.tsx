@@ -2,6 +2,28 @@ import React from "react";
 
 // --- Helper + LiftKit formulas (formula-based, not precomputed) ---
 
+type baseSizeKey = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl";
+type SizeKey = "em" | "2xs" | "3xs" | Extract<baseSizeKey, "md" | "sm" | "xs" | "2xs" | "3xs" | "lg" | "xl" | "2xl">;
+export type DecrementKey = "wholestep" | "halfstep" | "quarterstep" | "eighthstep";
+type TextStyleKey =
+  | "display1"
+  | "display2"
+  | "title1"
+  | "title2"
+  | "title3"
+  | "heading"
+  | "subheading"
+  | "body"
+  | "callout"
+  | "label"
+  | "caption"
+  | "capline";
+
+interface TypographyTableProps {
+  rootPx?: number; // default 16
+  precision?: number; // default 0.01 for display
+}
+
 const round = (num: number, precision = 0.001) => {
   const factor = 1 / precision;
   return Math.round(num * factor) / factor;
@@ -15,11 +37,9 @@ const LiftKit = {
     quarterstep: round(Math.pow(1.618, 0.25), 0.001),
     eighthstep: round(Math.pow(1.618, 0.125), 0.001),
   },
-  sizes: {} as any,
-  decrements: {} as any,
+  sizes: {} as Record<SizeKey, number>,
+  decrements: {} as Record<DecrementKey, number>,
 };
-
-type baseSizeKey = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl";
 
 LiftKit.sizes = {
   em: 1,
@@ -40,20 +60,6 @@ LiftKit.decrements = {
   quarterstep: LiftKit.steps.quarterstep - 1,
   eighthstep: LiftKit.steps.eighthstep - 1,
 };
-
-type TextStyleKey =
-  | "display1"
-  | "display2"
-  | "title1"
-  | "title2"
-  | "title3"
-  | "heading"
-  | "subheading"
-  | "body"
-  | "callout"
-  | "label"
-  | "caption"
-  | "capline";
 
 const size = {
   display1: LiftKit.sizes.em * Math.pow(LiftKit.steps.wholestep, 3),
@@ -100,12 +106,6 @@ const offset = {
   capline: size.capline * (lh.capline / LiftKit.steps.wholestep),
 } as const;
 
-// --- Component ---
-
-interface TypographyTableProps {
-  rootPx?: number; // default 16
-  precision?: number; // default 0.01 for display
-}
 
 const ORDER: TextStyleKey[] = [
   "display1",
@@ -127,7 +127,7 @@ const fmt = (n: number, p = 0.001) => {
   return (Math.round(n * factor) / factor).toFixed(3);
 };
 
-const TypographyTable: React.FC<TypographyTableProps> = ({ rootPx = 16, precision = 0.01 }) => {
+const TypographyTable: React.FC<TypographyTableProps> = ({ rootPx = 16 }) => {
   const rows = ORDER.map((k) => {
     const fontSizeEm = size[k];
     const lineHeightRatio = lh[k];
@@ -160,12 +160,6 @@ const TypographyTable: React.FC<TypographyTableProps> = ({ rootPx = 16, precisio
       xl: relSpacingEm.xl * fontSizePx,
       "2xl": relSpacingEm["2xl"] * fontSizePx,
     };
-
-    const relSpacingEmList = Object.entries(relSpacingPx).map(([key, value]) => (
-      <li key={key}>
-        {key}: {fmt(value)}
-      </li>
-    ));
 
     const relSpacingPxList = Object.entries(relSpacingPx).map(([key, value]) => (
       <li key={key}>
@@ -247,7 +241,7 @@ const TypographyTable: React.FC<TypographyTableProps> = ({ rootPx = 16, precisio
   );
 };
 
-export const RelativeSpacingTable: React.FC<TypographyTableProps> = ({ rootPx = 16, precision = 0.01 }) => {
+export const RelativeSpacingTable: React.FC<TypographyTableProps> = ({ rootPx = 16 }) => {
   const rows = ORDER.map((k) => {
     const fontSizeEm = size[k];
     const lineHeightRatio = lh[k];
@@ -285,7 +279,7 @@ export const RelativeSpacingTable: React.FC<TypographyTableProps> = ({ rootPx = 
       <h3 className="title3-bold mb-md">To ensure styles are being preserved in Tailwind:</h3>
       <ul className="mb-xl">
         <li>Render a list of each text style (already done below)</li>
-        <li>For each text style, render one variant for each spacing variable N with class "mb-[N]"</li>
+        <li>For each text style, render one variant for each spacing variable N with class &quot;mb-[N]&quot;</li>
         <li>Write a client-side script that verifies if the actual computed value of each example matches the correct value from the table below.</li>
         <li>If any values do not match, there is a problem with your Tailwind configuration.</li>
       </ul>
