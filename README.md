@@ -21,16 +21,50 @@
 
 <div class="mt-4 bg-amber-900 text-black"> Tailwind v4 </div>
 ```
-
-* Full Tailwind v4 support
-
-* Golden ratio spacing utilities (`mt-md`, `p-lg`, etc.)
-* Dynamic color utilities (`bg-primary`, `text-onprimary`, etc.)
-* Custom LiftKit utility classes alongside standard Tailwind
-* Dynamic color system powered by Material 3
-* Seamless integration with existing projects
+- **Full Tailwind v4 support** - Complete compatibility with the latest Tailwind CSS features
+- **Golden ratio spacing utilities** - Intuitive spacing with classes like `mt-md`, `p-lg`, etc.
+- **Dynamic color utilities** - Smart color system with `bg-primary`, `text-onprimary`, etc.
+- **Custom LiftKit utility classes** - Enhanced utilities that work alongside standard Tailwind
+- **Dynamic color system** - Powered by Material Design 3 color principles
 
 
+
+<br>
+
+## Installation
+
+### Prerequisites
+- A [Next.js](https://nextjs.org/docs/app/getting-started/installation) project set up
+- [Tailwind v4](https://tailwindcss.com/docs/installation/framework-guides/nextjs) installed and configured
+
+### Step 1: Install the Liftkit CLI 
+Add the LiftKit CLI to your project as a development dependency:
+```
+npm install @chainlift/liftkit --save-dev
+```
+Initialize LiftKit in your project:
+```
+npx liftkit init
+```
+> **Note:** When prompted, accept both options to:
+> - Add the script to your `package.json`
+> - Install shadcn/ui as a dev dependency
+
+### Step 2: Import Import LiftKit Styles:
+Add the LiftKit CSS import to your `globals.css` file:
+
+```css
+@import url("@/lib/css/index.css");
+```
+
+### Step 3: Add Components
+
+Install all available components from the LiftKit registry:
+```bash
+npx liftkit add https://lk-tw.pages.dev/r/all.json
+```
+
+That's it! Now you can use Tailwind CSS(v4) with Liftkit utility classes.
 
 <br>
 
@@ -42,28 +76,6 @@ It fully supports **Tailwind v4** plus LiftKit's custom utility classes and
 remains fully backward-compatible.
 
 <br>
-
-## Tailwind v4 Integration
-
-### Prerequisites
- Next.js project with LiftKit installed.
-
-### Step 1: Install Tailwind v4
-Follow the official guide: [Tailwind v4 Next.js Installation](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
-
-### Step 2: Update Your globals.css
-1. Go to [globals.css](https://github.com/jellydeck/liftkit-tailwind/blob/main/examples/globals.css) and copy the entire file
-2. Replace your existing `globals.css` with the copied content
-3. Update below path with liftkit's `index.css`:
-
-```css
-@layer lk-base {
-   @import "../lib/css/index.css";  /* IMPORTANT : update this path with LiftKit's index css file */
-}
-```
-
-That's it! Now you can use tailwind v4 + liftkit utility classes.
-
 
 ## How It Works
 
