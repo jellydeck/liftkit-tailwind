@@ -12,7 +12,7 @@
 </div>
 
 > This is a community project. It is not officially supported by Chainlift. 
- However, this may change in the future. To get notified about official updates, sign up at [chainlift.io/liftkit](chainlift.io/liftkit). 
+ However, this may change in the future. To get notified about official updates, sign up at [chainlift.io/liftkit](https://chainlift.io/liftkit). 
 
 ## Features
 
